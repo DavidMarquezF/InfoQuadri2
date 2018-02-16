@@ -27,10 +27,9 @@ Quan el *balance* és menor al mínim saldo permès, la compta entrarà en mode
 Funcionament
 ------------
 
-
 """
-
 import datetime
+
 class BankAccount(object):
     MinBalanceActive = 25
 

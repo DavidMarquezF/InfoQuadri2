@@ -1,2 +1,2 @@
 .. automodule:: BankAccount
-    :members:
+    :members: BankAccount
