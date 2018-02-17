@@ -20,7 +20,7 @@ Representació
 -------------
 
 Quan el *balance* és menor al mínim saldo permès, la compta entrarà en mode
- inactiu, que impedirà que es treguin diners en la funció :func: 'BanckAccount.withdraw'.
+inactiu, que impedirà que es treguin diners en la funció :func:`BankAccount.withdraw`.
 
 
 Funcionament
@@ -31,6 +31,19 @@ import datetime
 
 class BankAccount(object):
 
+    """
+    Per mostrar la string es fara lo següent::
+
+        Data: 2018-01-19 13:02 CompteBancari: Codi IBAN: ES66 Entitat: 2100 Oficina: 0418 Num Compte: 401234567891: 1670.0 Deposits # = 4 Withdrawals# = 0
+
+    Si la compta està activa, i::
+
+        Data: 2018-01-19 13:02 CompteBancari: Codi IBAN: ES10 Entitat: 0049 Oficina: 2352 Num Compte: 082414205416: 10.0 INACTIU
+
+    La classe conté les següents funcions:
+
+
+    """
     MinBalanceActive = 25
 
     def __init__(self, id,balance, interestRate, monthlyServiceCharges):

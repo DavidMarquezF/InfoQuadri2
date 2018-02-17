@@ -80,10 +80,8 @@
 </div></blockquote>
 <div class="section" id="representacio">
 <h2>Representació<a class="headerlink" href="#representacio" title="Link permanent a aquest títol">¶</a></h2>
-<dl class="docutils">
-<dt>Quan el <em>balance</em> és menor al mínim saldo permès, la compta entrarà en mode</dt>
-<dd>inactiu, que impedirà que es treguin diners en la funció :func: &#8216;BanckAccount.withdraw&#8217;.</dd>
-</dl>
+<p>Quan el <em>balance</em> és menor al mínim saldo permès, la compta entrarà en mode
+inactiu, que impedirà que es treguin diners en la funció <a class="reference internal" href="#BankAccount.BankAccount.withdraw" title="BankAccount.BankAccount.withdraw"><code class="xref py py-func docutils literal"><span class="pre">BankAccount.withdraw()</span></code></a>.</p>
 </div>
 <div class="section" id="funcionament">
 <h2>Funcionament<a class="headerlink" href="#funcionament" title="Link permanent a aquest títol">¶</a></h2>
@@ -92,7 +90,16 @@
 <dl class="class">
 <dt id="BankAccount.BankAccount">
 <em class="property">class </em><code class="descclassname">BankAccount.</code><code class="descname">BankAccount</code><span class="sig-paren">(</span><em>id</em>, <em>balance</em>, <em>interestRate</em>, <em>monthlyServiceCharges</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount" title="Link permanent a aquesta definició">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Per mostrar la string es fara lo següent:</p>
+<div class="highlight-python"><div class="highlight"><pre>Data: 2018-01-19 13:02 CompteBancari: Codi IBAN: ES66 Entitat: 2100 Oficina: 0418 Num Compte: 401234567891: 1670.0 Deposits # = 4 Withdrawals# = 0
+</pre></div>
+</div>
+<p>Si la compta està activa, i:</p>
+<div class="highlight-python"><div class="highlight"><pre>Data: 2018-01-19 13:02 CompteBancari: Codi IBAN: ES10 Entitat: 0049 Oficina: 2352 Num Compte: 082414205416: 10.0 INACTIU
+</pre></div>
+</div>
+<p>La classe conté les següents funcions:</p>
+<dl class="method">
 <dt id="BankAccount.BankAccount.deposit">
 <code class="descname">deposit</code><span class="sig-paren">(</span><em>amount</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.deposit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.deposit" title="Link permanent a aquesta definició">¶</a></dt>
 <dd><p>Realiza un ingrés d’una quantitat amount d’ euros en el compte. Si el saldo supera els 25
