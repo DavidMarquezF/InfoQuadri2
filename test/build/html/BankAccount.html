@@ -89,6 +89,68 @@
 <h2>Funcionament<a class="headerlink" href="#funcionament" title="Link permanent a aquest títol">¶</a></h2>
 </div>
 </div>
+<dl class="class">
+<dt id="BankAccount.BankAccount">
+<em class="property">class </em><code class="descclassname">BankAccount.</code><code class="descname">BankAccount</code><span class="sig-paren">(</span><em>id</em>, <em>balance</em>, <em>interestRate</em>, <em>monthlyServiceCharges</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><dl class="method">
+<dt id="BankAccount.BankAccount.deposit">
+<code class="descname">deposit</code><span class="sig-paren">(</span><em>amount</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.deposit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.deposit" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Realiza un ingrés d’una quantitat amount d’ euros en el compte. Si el saldo supera els 25
+euros, el compte passa a estat actiu.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>amount</strong> &#8211; El nombre de diners que es volen ingressar.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567891&quot;</span><span class="p">,</span><span class="mf">100.0</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">150.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567891&quot;</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">status</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">status</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="BankAccount.BankAccount.withdraw">
+<code class="descname">withdraw</code><span class="sig-paren">(</span><em>amount</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/BankAccount.html#BankAccount.withdraw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#BankAccount.BankAccount.withdraw" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Realitza un reintegrament d’una quantitat amount d’ euros. Només és factible el reintegra-
+ment si el compte és actiu. En aquest cas el mètode retorna el valor True. Si no és possible
+realitzar el reintegrament perquè el compte és inactiu, el mètode ha de retornar el valor
+False</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>amount</strong> &#8211; El nombre de diners que es volen treure</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">Retorna False si la compta és inactiva i True si no ho és</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">BankAccount</span><span class="p">(</span><span class="s2">&quot;ES6621000418401234567891&quot;</span><span class="p">,</span><span class="mf">100.0</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">withdraw</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">b</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 
 
           </div>

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-
 """
 Classe BankAccount
 ===================
@@ -31,6 +30,7 @@ Funcionament
 import datetime
 
 class BankAccount(object):
+
     MinBalanceActive = 25
 
     def __init__(self, id,balance, interestRate, monthlyServiceCharges):

@@ -1,2 +1,3 @@
 .. automodule:: BankAccount
-    :members: BankAccount
+.. autoclass:: BankAccount.BankAccount
+    :members:
