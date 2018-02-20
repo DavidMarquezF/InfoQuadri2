@@ -40,7 +40,7 @@ class BankAccount(object):
         self.monthlyServiceCharges = monthlyServiceCharges
         self.status = balance > BankAccount.MinBalanceActive
         self.numDeposits = 0
-        self.numWithdrawals = 0 
+        self.numWithdrawals = 0
 
     def __str__(self):
         iban = self.id[0:5]
@@ -50,11 +50,15 @@ class BankAccount(object):
         now = datetime.datetime.now()
         date = now.strftime("%d-%m-%Y %H:%M")
         if(self.status):
-            end = "Deposits # = {0} Withdrawals # = {1}".format(str(self.numDeposits), str(self.numWithdrawals))
+            if self.monthlyProcess():
+
+                end = "Deposits # = {0} Withdrawals # = {1}".format(str(self.numDeposits), str(self.numWithdrawals))
+            else:
+                end = "Deposits # = {0} Withdrawals # = {1}".format(str(self.numDeposits), str(self.numWithdrawals))
         else:
             end = "  INACTIVE"
         text = "Data: {0} CompteBancari: Codi IBAN: {1} Entitat: {2} Oficina: {3} Num Compte: {4}: {5} {6}".format(date, iban, entitat, oficina, numCompte, str(self.balance), end)
-
+        return text
     def withdraw(self, amount):
         """
         Realitza un reintegrament d’una quantitat amount d’ euros. Només és factible el reintegra-
@@ -79,6 +83,7 @@ class BankAccount(object):
             return False
 
         self.balance -= amount
+        self.numWithdrawals+=1
         if(self.balance < BankAccount.MinBalanceActive):
             self.status = False
         return True
@@ -102,6 +107,73 @@ class BankAccount(object):
         True
         """
         self.balance += amount
+        self.numDeposits+=1
         if(self.balance > BankAccount.MinBalanceActive):
             self.status = True
+
+    def calcMonthlyInterest(self):
+        """
+        Calcula i ingressa l'interès mensual a abonar en el compte, dividint per 12 l'interès anual aplicat i procedint a
+        l'ingrés de la quantitat corresponent.
+        >>> b = BankAccount("ES6621000418401234567891",100.0,0.03,2.5)
+        >>> b.deposit(1000)
+        >>> print b.calcMonthlyInterest()
+        1102.75
+        """
+
+        interest=self.interestRate
+        c=(interest/12)*self.balance + self.balance
+        return c
+
+    def monthlyProcess(self):
+        """
+        Aplica al compte el procés mensual consistent en cobrar les comissions i pagar els interessos mensuals,d'acord amb la
+        política de comissions explicada a l'enunciat i amb l'ingrés mensual dels ingressos. També posa a zero els comptadors
+        d'ingressos i reintegraments realitzats mensualment, preparant el compte per al nou mes.
+        >>> b= BankAccount("ES6621000418401234567891",100.0,0.03,2.5)
+        >>> b.withdraw(1)
+        True
+        >>> b.withdraw(1)
+        True
+        >>> b.withdraw(1)
+        True
+        >>> b.withdraw(1)
+        True
+        >>> b.withdraw(1)
+        True
+        >>> print b.monthlyProcess()
+        92.73125
+        """
+
+        reintegraments=self.numWithdrawals
+        procesmensual=self.monthlyServiceCharges
+        diners=procesmensual
+        self.balance-=diners
+        euros=0
+        if reintegraments>4:
+            euros=self.numWithdrawals
+            self.balance-=euros
+        dinerstotal=self.calcMonthlyInterest()
+
+        return dinerstotal
+
+if __name__=='__main__':
+    c1=BankAccount("ES6621000418401234567891",100.0,0.03,2.5)
+    c2=BankAccount("ES1000492352082414205416",10.0, 0.025, 5.0)
+    print c1
+    print c2
+    c1.deposit(25)
+    c1.deposit(10)
+    c1.deposit(35)
+    c1.deposit(1500)
+    print c1
+    c1.withdraw(100)
+    c1.withdraw(50)
+    print c1
+    print c2
+    print "Starting month"
+    c1.monthlyProcess()
+    c2.monthlyProcess()
+    print c1
+    print c2
 
