@@ -6,15 +6,15 @@ Classe BankAccount
 
 Gesiona una compte bancari d'un usuari. Cada compte té els següents atributs:
 
-    ============== =========== =================================
-    Atribut        Tipus       Significat
-    ============== =========== =================================
-    id             string      Identificador del compte
-    balance        float       Saldo del compte
-    status         boolean     Estat del compte: actiu o inactiu
-    numDeposits    int         Nombre d'ingressos mensuals
-    numWithdrawals int         Nombre de reintegraments mensuals
-    ============== =========== =================================
+    =============== =========== =================================
+    Atribut         Tipus       Significat
+    =============== =========== =================================
+    +id              string      Identificador del compte
+    +balance         float       Saldo del compte
+    +status          boolean     Estat del compte: actiu o inactiu
+    +numDeposits     int         Nombre d'ingressos mensuals
+    +numWithdrawals  int         Nombre de reintegraments mensuals
+    =============== =========== =================================
 
 Representació
 -------------
@@ -56,10 +56,10 @@ class BankAccount(object):
         self.numWithdrawals = 0 
 
     def __str__(self):
-        iban = self.id[0:5]
-        entitat = self.id[5:9]
-        oficina = self.id[9:13]
-        numCompte = self.id[13:]
+        iban = self.id[0:4]
+        entitat = self.id[4:8]
+        oficina = self.id[8:12]
+        numCompte = self.id[12:]
         now = datetime.datetime.now()
         date = now.strftime("%d-%m-%Y %H:%M")
         if(self.status):
@@ -67,6 +67,8 @@ class BankAccount(object):
         else:
             end = "  INACTIVE"
         text = "Data: {0} CompteBancari: Codi IBAN: {1} Entitat: {2} Oficina: {3} Num Compte: {4}: {5} {6}".format(date, iban, entitat, oficina, numCompte, str(self.balance), end)
+
+        return text
 
     def withdraw(self, amount):
         """
@@ -91,6 +93,7 @@ class BankAccount(object):
         if(not self.status):
             return False
 
+        self.numWithdrawals +=1
         self.balance -= amount
         if(self.balance < BankAccount.MinBalanceActive):
             self.status = False
@@ -114,7 +117,29 @@ class BankAccount(object):
         >>> print b.status
         True
         """
+        self.numDeposits+=1
         self.balance += amount
         if(self.balance > BankAccount.MinBalanceActive):
             self.status = True
 
+if __name__ == "__main__":
+    c1 = BankAccount("ES6621000418401234567891", 100.0, 0.03, 2.5)
+    c2 = BankAccount("ES1000492352082414205416", 10.0, 0.025, 5.0)
+    print c1
+    print c2
+    c1.deposit(25)
+    c1.deposit(10)
+    c1.deposit(35)
+    c1.deposit(1500)
+    print c1
+    c1.withdraw(100)
+    c1.withdraw(50)
+    c1.withdraw(100)
+    c1.withdraw(10)
+    c1.withdraw(1)
+    c1.withdraw(1)
+    c2.withdraw(1000)
+    c2.withdraw(500)
+    c2.withdraw(500)
+    print c1
+    print c2
