@@ -16,8 +16,8 @@ Gesiona una compte bancari d'un usuari. Cada compte té els següents atributs:
     +numWithdrawals  int         Nombre de reintegraments mensuals
     =============== =========== =================================
 
-Representació
--------------
+Política del banc
+------------------
 
 Quan el *balance* és menor al mínim saldo permès, la compta entrarà en mode
 inactiu, que impedirà que es treguin diners en la funció :func:`BankAccount.withdraw`.

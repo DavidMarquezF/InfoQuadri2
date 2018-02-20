@@ -2,27 +2,34 @@
 #-*- coding: utf-8 -*-
 
 """
-Classe BankAccount
-===================
+Classe BankAccountAmpliada
+===========================
 
 Gesiona una compte bancari d'un usuari. Cada compte té els següents atributs:
 
-    ============== =========== =================================
-    Atribut        Tipus       Significat
-    ============== =========== =================================
-    id             string      Identificador del compte
-    balance        float       Saldo del compte
-    status         boolean     Estat del compte: actiu o inactiu
-    numDeposits    int         Nombre d'ingressos mensuals
-    numWithdrawals int         Nombre de reintegraments mensuals
-    ============== =========== =================================
+    ======================= =========== =================================
+    Atribut                  Tipus       Significat
+    ======================= =========== =================================
+    +id                      string      Identificador del compte
+    +balance                 float       Saldo del compte
+    +status                  boolean     Estat del compte: actiu o inactiu
+    +numDeposits             int         Nombre d'ingressos mensuals
+    +numWithdrawals          int         Nombre de reintegraments mensuals
+    +interestRate            float       Interès anual a abonar
+    +monthlyServiceCharges   float       Comisió fixa mensual
+    ======================= =========== =================================
 
-Representació
--------------
+Política del banc
+------------------
 
 Quan el *balance* és menor al mínim saldo permès, la compta entrarà en mode
  inactiu, que impedirà que es treguin diners en la funció :func: 'BanckAccount.withdraw'.
 
+L'interestRate és l'interès anual a abonar però es divideix per 12 sobre una base de 1.0 i
+s'abona la part corresponent cada mes.
+
+Si en un mes el nombre de reintegraments és superior a 4, es cobrarà un euro addicional per
+cadascun dels reintegraments, és a dir, a partir del cinquè reintegrament es cobrarà 1 euro.
 
 Funcionament
 ------------
@@ -137,8 +144,9 @@ class BankAccountAmpliada(object):
         True
         >>> b.withdraw(1)
         True
-        >>> print b.monthlyProcess()
-        92.73125
+        >>> b.monthlyProcess()
+        >>> print b.balance
+        91.72875
         """
 
         reintegraments=self.numWithdrawals
@@ -152,7 +160,7 @@ class BankAccountAmpliada(object):
         self.numWithdrawals = 0
         self.numDeposits = 0
 
-        return self.balance
+
 
 if __name__=='__main__':
     c1 = BankAccountAmpliada("ES6621000418401234567891", 100.0, 0.03, 2.5)
