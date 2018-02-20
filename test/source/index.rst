@@ -3,18 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Benvinguts a la documentació de la Practica 1
-==============================================
+Benvinguts a la documentació de la Pràctica 1: iTICBanck
+=========================================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
+   Intro
    BankAccount
+   BankAccountAdvanced
 
 
-Indices and tables
+Índexs i taules
 ==================
 
 * :ref:`genindex`

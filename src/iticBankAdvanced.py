@@ -38,6 +38,19 @@ Funcionament
 import datetime
 
 class BankAccountAmpliada(object):
+    """
+       Per mostrar la string es fara lo següent::
+
+           Data: 2018-01-19 13:02 CompteBancari: Codi IBAN: ES66 Entitat: 2100 Oficina: 0418 Num Compte: 401234567891: 1670.0 Deposits # = 4 Withdrawals# = 0
+
+       Si la compta està activa, i::
+
+           Data: 2018-01-19 13:02 CompteBancari: Codi IBAN: ES10 Entitat: 0049 Oficina: 2352 Num Compte: 082414205416: 10.0 INACTIU
+
+       La classe conté les següents funcions:
+
+
+       """
     MinBalanceActive = 25
 
     def __init__(self, id,balance, interestRate, monthlyServiceCharges):
@@ -133,6 +146,7 @@ class BankAccountAmpliada(object):
         Aplica al compte el procés mensual consistent en cobrar les comissions i pagar els interessos mensuals,d'acord amb la
         política de comissions explicada a l'enunciat i amb l'ingrés mensual dels ingressos. També posa a zero els comptadors
         d'ingressos i reintegraments realitzats mensualment, preparant el compte per al nou mes.
+
         >>> b= BankAccountAmpliada("ES6621000418401234567891",100.0,0.03,2.5)
         >>> b.withdraw(1)
         True
