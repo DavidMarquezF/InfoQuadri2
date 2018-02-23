@@ -16,6 +16,8 @@ class UsuariBank(object):
         self.name = name
         self.__passw = passw
 
+    def __str__(self):
+        return "Nom: " + self.name + " BankAccount: " + str(self.__bankAccount)
     def authentificate(self):
         print "Per poder realitzar aquesta operacio, necessitem la teva contrassenya"
         i=0

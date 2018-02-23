@@ -26,6 +26,12 @@ class Bank(object):
         self.name = name
         self.__usuaris = {}
 
+    def __str__(self):
+        txtFinal=""
+        for usuari in self.__usuaris.values():
+            txtFinal+= str(usuari) +"\n"
+        return txtFinal
+
     def afegirUsuari(self):
         while True:
             nom = raw_input("Escriu el teu nom: ")
@@ -93,14 +99,17 @@ if(__name__ =="__main__"):
         print "[1] Afegir usuari"
         print "[2] Accedir usuari"
         print "[3] Cobrar interessos mensuals"
-        print "[4] Exit"
+        print "[4] Printeja bank"
+        print "[5] Exit"
 
-        op = askNumberOption("Seleccioni una opcio: ", 4)
+        op = askNumberOption("Seleccioni una opcio: ", 5)
         if (op == 1):
             bank.afegirUsuari()
         elif (op == 2):
             bank.entraUsuari()
         elif (op == 3):
             bank.monthlyProces()
+        elif (op == 4):
+            print bank
         else:
             exit()
