@@ -1,8 +1,34 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+"""
+Classe Usuari
+==============
+
+Gesiona un usuari utilitzant el banc avançat, nom i contrasenya
+
+    ======================= ========= ===============================
+    Atribut                  Tipus              Significat
+    ======================= ========= ===============================
+    -bankAccount
+    +name                    string    Nom de l'usuari
+    -passw                   string    Contrasenya de l'usuari
+    ======================= ========= ===============================
+
+Funcionament
+------------
+
+"""
 from iticBankAdvanced import *
 from getpass import getpass
 
 
 def checkIfInt(number):
+    """
+    Mira si un numero és float o no
+    :param number: número donat
+    :return: retorna true si ho és i false si no
+    """
     try:
         float(number)
         return True
@@ -11,6 +37,13 @@ def checkIfInt(number):
 
 
 class UsuariBank(object):
+    """
+    Aquesta classe gestiona un usuari d'un banc. Té funcions per autentificar, printejar la compta, depositar,retirar i
+    aplicar el procés mensual.
+
+    Per què un usuari entri s'autentifica amb un màxim de 3 intents i podrà depositar o retirar segons l'estat del seu
+    compte.
+    """
     def __init__(self, bankAdvanced, name, passw):
         self.__bankAccount = bankAdvanced
         self.name = name
@@ -19,6 +52,10 @@ class UsuariBank(object):
     def __str__(self):
         return "Nom: " + self.name + " BankAccount: " + str(self.__bankAccount)
     def authentificate(self):
+        """
+        En aquesta funció t'autentifiques escrivint el nom i la contrasenya en 3 intents com a límit.
+        :return: retorna true si accedeixes a la compta i false si no.
+        """
         print "Per poder realitzar aquesta operacio, necessitem la teva contrassenya"
         i=0
         while i < 4:
@@ -33,9 +70,16 @@ class UsuariBank(object):
         return False
 
     def comptaBancaria(self):
+        """
+        Printeja les dades de la compta.
+        """
         print self.__bankAccount
 
     def deposit(self):
+        """
+        Funció per ingressar diners al compte.
+
+        """
         print "\nINGRESSAR DINERS A:",self.name,"\n"
         if(self.authentificate()):
             while True:
@@ -50,6 +94,10 @@ class UsuariBank(object):
             print "No t'has pogut autentificar correctament."
 
     def withdraw(self):
+        """
+        Funció per retirar diners. Si la teva compta està inactiva no pots retirar diners.
+
+        """
         if(self.__bankAccount.status == False):
             print "La teva compta esta inactiva, no pots retirar diners."
             return
@@ -71,6 +119,9 @@ class UsuariBank(object):
         else:
             print "No t'has pogut autentificar correctament."
     def monthlyProcess(self):
+        """
+        Funció que aplica el procés mensual al compte.
+        """
         self.__bankAccount.monthlyProcess()
 
 
