@@ -10,7 +10,7 @@ Gesiona un usuari utilitzant el banc avançat, nom i contrasenya
     ======================= ========= ===============================
     Atribut                  Tipus              Significat
     ======================= ========= ===============================
-    -bankAccount
+    -bankAccount             classe    Classe BankAccountAmpliada
     +name                    string    Nom de l'usuari
     -passw                   string    Contrasenya de l'usuari
     ======================= ========= ===============================
