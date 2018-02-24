@@ -5,7 +5,7 @@
 Classe Usuari
 ==============
 
-Gesiona un usuari utilitzant el banc avançat, nom i contrasenya
+Gestiona un usuari utilitzant el banc avançat, nom i contrasenya.
 
     ======================= ========= ===============================
     Atribut                  Tipus              Significat
