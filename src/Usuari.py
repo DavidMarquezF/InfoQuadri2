@@ -83,7 +83,7 @@ class UsuariBank(object):
         print "\nINGRESSAR DINERS A:",self.name,"\n"
         if(self.authentificate()):
             while True:
-                x = raw_input("Quants diners vols ingressar? ")
+                x = raw_input("Quants diners vols ingresskar? ")
                 if(not checkIfInt(x)):
                     print "Introdueixi un valor valid"
                 else:
