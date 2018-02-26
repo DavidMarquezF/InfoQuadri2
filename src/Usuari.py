@@ -2,18 +2,21 @@
 #-*- coding: utf-8 -*-
 
 """
+.. _usuari-link:
+
+==============
 Classe Usuari
 ==============
 
 Gestiona un usuari utilitzant el banc avançat, nom i contrasenya.
 
-    ======================= ========= ===============================
-    Atribut                  Tipus              Significat
-    ======================= ========= ===============================
-    -bankAccount             classe    Classe BankAccountAmpliada
-    +name                    string    Nom de l'usuari
-    -passw                   string    Contrasenya de l'usuari
-    ======================= ========= ===============================
+    ======================= ============================================== ===============================
+    Atribut                  Tipus                                           Significat
+    ======================= ============================================== ===============================
+    -bankAccount             :class:`iticBankAdvanced.BankAccountAmpliada`   BankAccountAmpliada de l'usuari
+    +name                    string                                          Nom de l'usuari
+    -passw                   string                                          Contrasenya de l'usuari
+    ======================= ============================================== ===============================
 
 Funcionament
 ------------
@@ -23,11 +26,11 @@ from iticBankAdvanced import *
 from getpass import getpass
 
 
-def checkIfInt(number):
+def checkIfFloat(number):
     """
     Mira si un numero és float o no
     :param number: número donat
-    :return: retorna true si ho és i false si no
+    :return: retorna true si és float i false si no
     """
     try:
         float(number)
@@ -84,7 +87,7 @@ class UsuariBank(object):
         if(self.authentificate()):
             while True:
                 x = raw_input("Quants diners vols ingresskar? ")
-                if(not checkIfInt(x)):
+                if(not checkIfFloat(x)):
                     print "Introdueixi un valor valid"
                 else:
                     break
@@ -105,7 +108,7 @@ class UsuariBank(object):
         if(self.authentificate()):
             while True:
                 x = raw_input("Quants diners vols retirar? ")
-                if(not checkIfInt(x)):
+                if(not checkIfFloat(x)):
                     print "Introdueixi un valor valid"
                 else:
                     break

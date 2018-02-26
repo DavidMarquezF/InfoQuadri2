@@ -28,9 +28,9 @@ Tasca   David M.  Ferran G.  Total
 T1        20min     0min      20min
 T2         1h        10min    1h10min
 T3        10min      3h       3h10min
-T4
+T4          2h       2h         4h
 
-Total   1h30min    3h10min    4h40min
+Total   3h30min    5h10min    8h40min
 ====== ========= ========== =========
 
 
@@ -38,3 +38,18 @@ Total   1h30min    3h10min    4h40min
 
 Toc personal
 ============
+
+El nostre toc personal ha consistit en crear un banc funcional, que permet les següents opcions:
+
+1. Afegir i eliminar usuaris
+2. Mostrar informació bancària dels usuaris
+3. Mostrar una llista completa dels usuaris amb les seves comptes
+4. Cobrar interessos mensuals de tots els usuaris.
+
+Un Usuari és un contenidor d'informació bancaria, nom i contrassenya per accedir-hi.
+Quan es crea un usuari se l'hi assigna un ID aleatòri i uns interessos mensuals també aleatoris.
+
+Per assolir aquest comportament hem implementat dos mòduls:
+
+* El mòdul :ref:`usuari-link` - Per fer la gestió d'usuaris
+* El mòdul :ref:`bank-link` - Per fer la gestió del banc

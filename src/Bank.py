@@ -2,6 +2,9 @@
 #-*- coding: utf-8 -*-
 
 """
+.. _bank-link:
+
+===========
 Classe Bank
 ===========
 
@@ -32,7 +35,7 @@ def askNumberOption(question, numbers):
     """
     while(True):
         answerUser = raw_input(question)
-        while(not checkIfInt(answerUser)):
+        while(not checkIfFloat(answerUser)):
             answerUser = raw_input("Escriu una opcio vàlida: ")
         answerUser = int(answerUser)
         if(answerUser > 0 and answerUser <= numbers):
