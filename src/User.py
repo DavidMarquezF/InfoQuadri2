@@ -1,5 +1,24 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+"""
+=================
+Classe User
+=================
+
+"""
 import base64
+
 def encode(key, string):
+    """
+    Encripta una string a partir d'una clau
+    :param key: La clau amb la qual s'encriptarà
+    :param string: La string a encriptar
+    :return: La string encriptada
+
+    >>> encode("clau", "Hola")
+    'q9vN1g=='
+    """
     encoded_chars = []
     for i in xrange(len(string)):
         key_c = key[i % len(key)]
@@ -9,6 +28,21 @@ def encode(key, string):
     return base64.urlsafe_b64encode(encoded_string)
 
 class User(object):
+    """
+    Aquesta classe és la que defineix l'usuari i com funcionarà.
+
+    Un usuari té una llista de posts associat amb ell.
+
+    ======================= ========= =========================================================================
+    Atribut                  Tipus                       Significat
+    ======================= ========= =========================================================================
+    +nick                    string    És el nick de l'usuari
+    -email                   string    És l'email de l'usuari
+    -password                string    És el password de l'usuari. Quan es mostri per pantalla serà encriptat.
+    +posts                   list      Llista de posts de l'usuari (:class:`Post.Post`)
+    ======================= ========= =========================================================================
+
+    """
     def __init__(self, nick, email, password, posts = []):
         self.nick=nick
         self.__email=email
@@ -19,10 +53,10 @@ class User(object):
         return self.nick == other.nick
 
     def __str__(self):
-        txt = "Usuari: "+self.nick + " Email: " + self.getEmail() + " Encripted password: " + encode(3, self.__password) + "\n\n" + "Published posts: "
+        txt = "Usuari: "+self.nick + " Email: " + self.getEmail() + " Encripted password: " + encode("clau", self.__password) + "\n\n" + "Published posts: "
         if(len(self.posts) <= 0):
             txt+="No posts available"
-        txt+="\n\n"
+        txt+="\n"
         for post in self.posts:
             txt+=str(post) + "\n\n"
         return txt
@@ -31,5 +65,18 @@ class User(object):
         return self.__email
 
     def registra_post(self, post):
+        """
+        Afegeig un post a la llista de posts associats a aquest usuari
+        :param post: El post a afegir (del tipus :class:`Post.Post`)
+        """
         self.posts.append(post)
 
+
+if(__name__ == "__main__"):
+    p1 = User("john24", "john24@gmail.com", "abracadabra")
+    p2 = User("johh24", "john244@gmail.com", "patadecabra")
+    print p1
+    print p2
+    p3 = User("john24", "john2444@gmail.com", "supercalifra")
+    print p3.nick
+    print p1 == p3
