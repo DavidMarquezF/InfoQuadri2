@@ -1,4 +1,8 @@
+"""
+
+"""
 import datetime
+
 class Post(object):
     idd=1
     def __init__(self,contingut):
