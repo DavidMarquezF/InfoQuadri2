@@ -1,6 +1,6 @@
 import datetime
 class Post(object):
-    idd=0
+    idd=1
     def __init__(self,contingut):
         now = datetime.datetime.now()
         self.id=Post.idd
@@ -29,7 +29,7 @@ class Post(object):
 
 
     def __str__(self):
-        txt="Post id:" + " " + str(self.id+1) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:" + " "
+        txt="Post id:" + " " + str(self.id) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:" + " "
         for e in self.contenidor:
             txt+=str(e)
         return txt
@@ -50,8 +50,8 @@ class Hashtag(object):
 
 
 if __name__=='__main__':
-    h1=Hashtag("#adventure")
-    h2=Hashtag("#winter")
+    h1=Hashtag("adventure")
+    h2=Hashtag("winter")
     print h1
     print h1==h2
     post1=Post("Cal realitzar el possible per assolir l'impossible.")
