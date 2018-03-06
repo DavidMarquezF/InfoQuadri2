@@ -6,6 +6,8 @@ class Post(object):
         self.id=Post.idd
         self.contingut=contingut
         self.__date= now.strftime("%d-%m-%Y %H:%M")
+        self.contenidor=[]
+        self.registra_usuari("ningu")
         Post.idd+=1
 
     def __eq__(self, other):
@@ -19,10 +21,18 @@ class Post(object):
     def __iter__(self):
         return iter(str(self.id))
 
+    def registra_usuari(self,nick):
+        self.nick=nick
+
+    def afegeix_hashtag(self,id):
+        self.contenidor.append(id)
+
 
     def __str__(self):
-        return "Post id:" + " " + str(self.id+1) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate()
-
+        txt="Post id:" + " " + str(self.id+1) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:"
+        for e in self.contenidor:
+            txt+=str(e)
+        return txt
 
 
 class Hashtag(object):
@@ -33,15 +43,15 @@ class Hashtag(object):
         return self.id==other.id
 
     def __str__(self):
-        return "#" + self.id
+        return self.id
 
 
 
 
 
 if __name__=='__main__':
-    h1=Hashtag("adventure")
-    h2=Hashtag("winter")
+    h1=Hashtag("#adventure")
+    h2=Hashtag("#winter")
     print h1
     print h1==h2
     post1=Post("Cal realitzar el possible per assolir l'impossible.")
