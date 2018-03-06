@@ -28,14 +28,14 @@ class Post(object):
     def registra_usuari(self,nick):
         self.nick=nick
 
-    def afegeix_hashtag(self,id):
-        self.contenidor.append(id)
+    def afegeix_hashtag(self,Hashtag):
+        self.contenidor.append(Hashtag)
 
 
     def __str__(self):
         txt="Post id:" + " " + str(self.id) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:" + " "
         for e in self.contenidor:
-            txt+=str(e)
+            txt+=str(e) + " "
         return txt
 
 
