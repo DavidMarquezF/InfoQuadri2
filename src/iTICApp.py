@@ -148,6 +148,11 @@ class iTICApp(object):
             print post
 
     def follow(self, followerNick, followingNick):
+        """
+        Fa que un usuari en segueixi a un altre
+        :param followerNick: El nick del usuari que seguirà.
+        :param followingNick: El nick de l'usuari que serà seguit
+        """
         if(followerNick not in self.getUsuaris() or followingNick not in self.getUsuaris()):
             print "Algun usuari no existeix"
             return
@@ -158,6 +163,10 @@ class iTICApp(object):
         print followerNick, "ha començat a seguir a", followingNick, "!"
 
     def userFollow(self, nick):
+        """
+        Printeja el nombre de seguidors i el nombre de persones que segueix un usuari
+        :param nick: El nick del qual volem saber el nombre de followers i following
+        """
         if (nick not in self.getUsuaris()):
             print "El nick no existeix"
             return
@@ -166,6 +175,10 @@ class iTICApp(object):
         print "\tFollowing:", len(self.getUsuaris()[nick].following)
 
     def printFollowers(self, nick):
+        """
+        Printeja els nicks dels followers d'un usuari
+        :param nick: Nick de l'usuari del qual vols saber l'informació
+        """
         if (nick not in self.getUsuaris()):
             print "El nick no existeix"
             return
@@ -174,6 +187,10 @@ class iTICApp(object):
         print
 
     def printFollowing(self, nick):
+        """
+        Printeja els nicks dels seguits d'un usuari
+        :param nick: Nick de l'usuari del qual vols saber l'informació
+        """
         if (nick not in self.getUsuaris()):
             print "El nick no existeix"
             return
