@@ -9,6 +9,7 @@ Classe iTICApp
 """
 from User import *
 from posts import *
+from MainLib import *
 class iTICApp(object):
     """
     La classe iTICApp serà la que se n'ocuparà de gestionar tots els usuaris, posts i tags de la xarxa social.
@@ -50,7 +51,7 @@ class iTICApp(object):
         >>> i.afegirUsuari("pere","pere@gmail.com","gilisticoexpia")
         El usuari pere ja existeix
         """
-        if(nick in self.getUsuaris()): #TODO: Cal mirar si aixo s'hauria de fer aixi
+        if(nick in self.getUsuaris()):
             print "El usuari",nick, "ja existeix"
             return
 
@@ -82,8 +83,8 @@ class iTICApp(object):
         if(nick not in self.getUsuaris()):
             print "El usuari",nick,"no existeix"
             return
-        if(idHashtag not in self.getHashtags()): #TODO: és aixo el que s'ha de fer?
-            self.afegeixHashtag(idHashtag)
+
+        self.afegeixHashtag(idHashtag)
 
         post = Post(contingutPost)
         post.registra_usuari(nick)
@@ -93,7 +94,9 @@ class iTICApp(object):
         self.getUsuaris()[nick].registra_post(post)
 
     def afegirHastagAlPost(self, idPost, hashthagId):
-        #TODO: Mirar si et passen int idPost
+        if(not checkIfInt(idPost)):
+            print "El id del post és un nombre"
+            return
         if(int(idPost) not in self.getPosts()):
             print "Aquest id de post no existeix"
             return

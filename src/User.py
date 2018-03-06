@@ -7,25 +7,7 @@ Classe User
 =================
 
 """
-import base64
-
-def encode(key, string):
-    """
-    Encripta una string a partir d'una clau
-    :param key: La clau amb la qual s'encriptarà
-    :param string: La string a encriptar
-    :return: La string encriptada
-
-    >>> encode("clau", "Hola")
-    'q9vN1g=='
-    """
-    encoded_chars = []
-    for i in xrange(len(string)):
-        key_c = key[i % len(key)]
-        encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
-        encoded_chars.append(encoded_c)
-    encoded_string = "".join(encoded_chars)
-    return base64.urlsafe_b64encode(encoded_string)
+from MainLib import encode
 
 class User(object):
     """
