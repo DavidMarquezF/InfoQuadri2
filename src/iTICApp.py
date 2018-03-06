@@ -64,8 +64,9 @@ class iTICApp(object):
         if (id in self.getHashtags()):
             return
         print "S'ha creat el hashtag", id
-
-        self.getHashtags()[id] = Hashtag(id)
+        h = Hashtag(id)
+        self.getHashtags()[id] = h
+        return h
 
     def publicarPost(self, nick, idHashtag, contingutPost):
         """
@@ -77,6 +78,7 @@ class iTICApp(object):
         :param idHashtag: El id del hashtag
         :param contingutPost: El contingut del post
         """
+
         if(nick not in self.getUsuaris()):
             print "El usuari",nick,"no existeix"
             return
@@ -91,11 +93,13 @@ class iTICApp(object):
         self.getUsuaris()[nick].registra_post(post)
 
     def afegirHastagAlPost(self, idPost, hashthagId):
+        #TODO: Mirar si et passen int idPost
         if(int(idPost) not in self.getPosts()):
             print "Aquest id de post no existeix"
             return
-        self.getPosts()[int(idPost)].afegeix_hashtag(hashthagId)
-        self.afegeixHashtag(hashthagId)
+        h = self.afegeixHashtag(hashthagId)
+
+        self.getPosts()[int(idPost)].afegeix_hashtag(h)
 
     def users(self):
         """
