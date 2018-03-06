@@ -8,6 +8,7 @@ Classe iTICApp
 
 """
 from User import *
+from posts import *
 class iTICApp(object):
     """
     La classe iTICApp serà la que se n'ocuparà de gestionar tots els usuaris, posts i tags de la xarxa social.
@@ -82,8 +83,11 @@ class iTICApp(object):
         if(idHashtag not in self.getHashtags()): #TODO: és aixo el que s'ha de fer?
             self.afegeixHashtag(idHashtag)
 
-        post = Post(nick, contingutPost)
-        post.Addhashtag = self.getHashtags()[idHashtag]
+        post = Post(contingutPost)
+        post.registra_usuari(nick)
+        post.afegeix_hashtag(self.getHashtags()[idHashtag])
+        self.getPosts()[contingutPost] = post
+        self.getUsuaris()[nick].registra_post(post)
 
 
     def users(self):
@@ -103,7 +107,7 @@ class iTICApp(object):
         Llista per pantalla la informació completa de tots els posts en ordre invers a com s’han
         realitzat.
         """
-        for post in self.getPosts():
+        for post in self.getPosts().values():
             print post
             print
 
