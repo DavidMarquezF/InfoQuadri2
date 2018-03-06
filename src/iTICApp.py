@@ -109,6 +109,9 @@ class iTICApp(object):
         Llista per pantalla la informació completa dels usuaris de l’aplicatiu, incloent la informació
         dels seus posts.
         """
+        if(len(self.getUsuaris()) <= 0):
+            print "No hi ha cap usuari"
+            return
         lst=[]
         for u in self.getUsuaris().values():
             lst.append(str(u))
@@ -121,6 +124,10 @@ class iTICApp(object):
         Llista per pantalla la informació completa de tots els posts en ordre invers a com s’han
         realitzat.
         """
+        if(len(self.getPosts()) <= 0):
+            print "No hi ha cap post"
+            return
+
         for post in self.getPosts().values():
             print post
             print
@@ -133,6 +140,9 @@ class iTICApp(object):
         """
         if(nick not in self.getUsuaris()):
             print "El usuari",nick,"no exiteix"
+            return
+        if(len(self.getUsuaris()[nick].posts) <= 0):
+            print "El usuari no té cap post penjat"
             return
         for post in self.getUsuaris()[nick].posts:
             print post
