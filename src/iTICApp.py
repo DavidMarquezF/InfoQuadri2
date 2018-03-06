@@ -58,12 +58,12 @@ class iTICApp(object):
 
     def afegeixHashtag(self, id):
         """
-        Afegeix un hashtag de id *id* a la xarxaSocial. Si existia hashtag amb el mateix id es queixa.
+        Afegeix un hashtag de id *id* a la xarxaSocial. Si no existia un hashtag amb el mateix avisa que s'ha creat.
         :param id: El id del hashtag
         """
         if (id in self.getHashtags()):
-            print "El hashtag", id, "ja existeix"
             return
+        print "S'ha creat el hashtag", id
 
         self.getHashtags()[id] = Hashtag(id)
 
@@ -86,9 +86,16 @@ class iTICApp(object):
         post = Post(contingutPost)
         post.registra_usuari(nick)
         post.afegeix_hashtag(self.getHashtags()[idHashtag])
-        self.getPosts()[contingutPost] = post
+        self.afegeixHashtag(idHashtag)
+        self.getPosts()[post.id] = post
         self.getUsuaris()[nick].registra_post(post)
 
+    def afegirHastagAlPost(self, idPost, hashthagId):
+        if(int(idPost) not in self.getPosts()):
+            print "Aquest id de post no existeix"
+            return
+        self.getPosts()[int(idPost)].afegeix_hashtag(hashthagId)
+        self.afegeixHashtag(hashthagId)
 
     def users(self):
         """

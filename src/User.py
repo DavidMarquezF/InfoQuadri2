@@ -72,6 +72,9 @@ class User(object):
         self.posts.append(post)
 
 
+
+
+
 if(__name__ == "__main__"):
     p1 = User("john24", "john24@gmail.com", "abracadabra")
     p2 = User("johh24", "john244@gmail.com", "patadecabra")

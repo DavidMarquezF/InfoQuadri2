@@ -53,11 +53,24 @@ def printT(info):
             i.postsUser(nick)
     else:
         print "El primer paràmetre ha de ser users, posts o posts-user"
+
+def afegirHashtags(info):
+    if (len(info) < 2):
+        print "Es necessiten dos paràmetres: postId i hasthatgs"
+    postId = info[0]
+    hashtags = info[1:]
+    for hashtagId in hashtags:
+        i.afegirHastagAlPost(postId, hashtagId)
+
+
 if(__name__ == "__main__"):
+    usuari(["Ferran"])
+    publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
     interpret = Interpret()
     interpret.afegeixOrdre("usuari", usuari)
     interpret.afegeixOrdre("hashtag", hashtag)
     interpret.afegeixOrdre("publicar",publicar)
     interpret.afegeixOrdre("print", printT)
+    interpret.afegeixOrdre("afHashtag", afegirHashtags)
     interpret.setPrompt("- ")
     interpret.run()
