@@ -29,7 +29,7 @@ class Post(object):
 
 
     def __str__(self):
-        txt="Post id:" + " " + str(self.id+1) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:"
+        txt="Post id:" + " " + str(self.id+1) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:" + " "
         for e in self.contenidor:
             txt+=str(e)
         return txt
@@ -43,7 +43,7 @@ class Hashtag(object):
         return self.id==other.id
 
     def __str__(self):
-        return self.id
+        return "#" + self.id
 
 
 
