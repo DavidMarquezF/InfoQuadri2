@@ -25,11 +25,11 @@ class User(object):
     ======================= ========= =========================================================================
 
     """
-    def __init__(self, nick, email, password, posts = []):
+    def __init__(self, nick, email, password):
         self.nick=nick
         self.__email=email
         self.__password=password
-        self.posts = posts
+        self.posts = []
 
     def __eq__(self, other):
         return self.nick == other.nick

@@ -62,15 +62,27 @@ def afegirHashtags(info):
     for hashtagId in hashtags:
         i.afegirHastagAlPost(postId, hashtagId)
 
+def help(i):
+    print "Ajuda per a fer instruccions:"
+    print "- usuari <nick> -> Crea un usuari"
+    print "- hashtag <id> -> Afegeix un hashtag a la xarxa Social"
+    print "- publicar <nick> <hastag (únic)> <contingut post> -> Afegeix un post a l'usuari <nick>"
+    print "- afHashtag <postId> [<hashtags>] -> Afegeix hashtags al post <id>"
+    print "- print <ent> [<nick>] -> Per printejar infotmació. Ent pot ser:"
+    print "0. users -> no és  necessari posar més paràmetres. Mostrarà una llista completa d'usuaris"
+    print "1. posts -> tampoc és necessari posr més paràmetres. Mostrarà una llista de tots els posts"
+    print "2. posts-user -> requereix un altre paràmetre: el nick de l'usuari del qual volem saber els posts. Si ho vols saber de més d'un introdueixne els que necessitis"
 
 if(__name__ == "__main__"):
     usuari(["Ferran"])
     publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
+    print "Per ajuda escriu - help me"
     interpret = Interpret()
     interpret.afegeixOrdre("usuari", usuari)
     interpret.afegeixOrdre("hashtag", hashtag)
     interpret.afegeixOrdre("publicar",publicar)
     interpret.afegeixOrdre("print", printT)
     interpret.afegeixOrdre("afHashtag", afegirHashtags)
+    interpret.afegeixOrdre("help", help)
     interpret.setPrompt("- ")
     interpret.run()
