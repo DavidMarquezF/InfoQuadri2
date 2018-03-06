@@ -30,6 +30,8 @@ class User(object):
         self.__email=email
         self.__password=password
         self.posts = []
+        self.followers = []
+        self.following = []
 
     def __eq__(self, other):
         return self.nick == other.nick
@@ -53,6 +55,19 @@ class User(object):
         """
         self.posts.append(post)
 
+    def addFollower(self, follower):
+        """
+        Afegeix un usuari a la llista de followers d'aquest usuari
+        :param follower: Usuari a afegir a la llista dels seguidors (:class:User.User`).
+        """
+        self.followers.append(follower)
+
+    def addFollowing(self, following):
+        """
+        Afegeix un usuari a la llista de following d'aquest usuari
+        :param following: Usuari a seguir (:class:User.User`).
+        """
+        self.following.append(following)
 
 
 

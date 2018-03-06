@@ -146,3 +146,37 @@ class iTICApp(object):
             return
         for post in self.getUsuaris()[nick].posts:
             print post
+
+    def follow(self, followerNick, followingNick):
+        if(followerNick not in self.getUsuaris() or followingNick not in self.getUsuaris()):
+            print "Algun usuari no existeix"
+            return
+        follower = self.getUsuaris()[followerNick]
+        following = self.getUsuaris()[followingNick]
+        following.addFollower(follower)
+        follower.addFollowing(following)
+        print followerNick, "ha començat a seguir a", followingNick, "!"
+
+    def userFollow(self, nick):
+        if (nick not in self.getUsuaris()):
+            print "El nick no existeix"
+            return
+        print nick+":"
+        print "\tFollowers:", len(self.getUsuaris()[nick].followers)
+        print "\tFollowing:", len(self.getUsuaris()[nick].following)
+
+    def printFollowers(self, nick):
+        if (nick not in self.getUsuaris()):
+            print "El nick no existeix"
+            return
+        for follower in self.getUsuaris()[nick].followers:
+            print follower.nick+",",
+        print
+
+    def printFollowing(self, nick):
+        if (nick not in self.getUsuaris()):
+            print "El nick no existeix"
+            return
+        for following in self.getUsuaris()[nick].following:
+            print following.nick+",",
+        print
