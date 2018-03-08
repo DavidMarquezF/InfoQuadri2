@@ -182,6 +182,8 @@ class iTICApp(object):
         if (nick not in self.getUsuaris()):
             print "El nick no existeix"
             return
+        if (len(self.getUsuaris()[nick].followers) <= 0):
+            print nick, "no és seguit per a ningú"
         for follower in self.getUsuaris()[nick].followers:
             print follower.nick+",",
         print
@@ -194,6 +196,8 @@ class iTICApp(object):
         if (nick not in self.getUsuaris()):
             print "El nick no existeix"
             return
+        if(len(self.getUsuaris()[nick].following) <= 0):
+            print nick, "no segueix a ningú"
         for following in self.getUsuaris()[nick].following:
             print following.nick+",",
         print

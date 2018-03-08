@@ -62,7 +62,7 @@ def printT(info):
             return
         i.printFollowing(info[1])
     else:
-        print "El primer paràmetre ha de ser users, posts o posts-user"
+        print "El primer paràmetre ha de ser users, posts, posts-user, followers-user o following-user"
 
 def afegirHashtags(info):
     if (len(info) < 2):
