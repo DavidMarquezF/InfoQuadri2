@@ -41,7 +41,7 @@ Toc personal
 El nostre toc personal ha estat afegir la funcionalitat de followers i following, que permet que els usuaris segueixin a altres usuaris.
 
 A més a més hem afegit al intèrpret varies funcions relacionades amb la gestió de followers i following (printejar, veure els posts ordenats cronològicament invers penjats
-per els usuaris que segueix un usuari).
+per els usuaris que segueix un usuari, etc. ).
 
 També hem posat una funció help que descriu totes les funcionalitats del intèrpret i com cridar-les.
 
