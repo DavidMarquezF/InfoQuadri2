@@ -86,7 +86,7 @@ def printT(info):
         #. Posts-user: Printeja els posts d'un usuari
         #. Followers-user: Printeja els followers d'un usuari
         #. Following-user: Printeja a qui està seguint l'usuari
-        #. Following-posts: Printeja els posts de les persones que segueix un usuari ordenats cronològicament
+        #. Following-posts: Printeja els posts de les persones que segueix un usuari ordenats cronològicament (invers)
 
     :param info: Llista de strings on el primer serà el mode de printeig descrit anteriorment
     """
