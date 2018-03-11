@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Classe iTICApp &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="index.html" />
+    <link rel="next" title="Classe User" href="User.html" />
+    <link rel="prev" title="Classe Intèrpret" href="Interpret.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-iTICApp"></span><div class="section" id="classe-iticapp">
+<h1>Classe iTICApp<a class="headerlink" href="#classe-iticapp" title="Link permanent a aquest títol">¶</a></h1>
+<dl class="class">
+<dt id="iTICApp.iTICApp">
+<em class="property">class </em><code class="descclassname">iTICApp.</code><code class="descname">iTICApp</code><a class="reference internal" href="_modules/iTICApp.html#iTICApp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>La classe iTICApp serà la que se n&#8217;ocuparà de gestionar tots els usuaris, posts i tags de la xarxa social.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Atribut</th>
+<th class="head">Tipus</th>
+<th class="head">Significat</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-usuaris</td>
+<td>dict</td>
+<td>Diccionari de <a class="reference internal" href="User.html#User.User" title="User.User"><code class="xref py py-class docutils literal"><span class="pre">User.User</span></code></a> dins de la xarxa social (key = nick)</td>
+</tr>
+<tr class="row-odd"><td>-posts</td>
+<td>dict</td>
+<td>Diccionari de <a class="reference internal" href="Posts.html#Posts.Post" title="Posts.Post"><code class="xref py py-class docutils literal"><span class="pre">Posts.Post</span></code></a> penjats en la xarxa (key = info)</td>
+</tr>
+<tr class="row-even"><td>-hashtags</td>
+<td>dict</td>
+<td>Diccionari de <a class="reference internal" href="Hashtags.html#Hashtags.Hashtag" title="Hashtags.Hashtag"><code class="xref py py-class docutils literal"><span class="pre">Hashtags.Hashtag</span></code></a> penjats en la xarxa (key = id)</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="iTICApp.iTICApp.afegeixHashtag">
+<code class="descname">afegeixHashtag</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.afegeixHashtag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.afegeixHashtag" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Afegeix un hashtag de id <em>id</em> a la xarxaSocial. Si no existia un hashtag amb el mateix avisa que s&#8217;ha creat.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>id</strong> &#8211; El id del hashtag</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.afegirHastagAlPost">
+<code class="descname">afegirHastagAlPost</code><span class="sig-paren">(</span><em>idPost</em>, <em>hashthagId</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.afegirHastagAlPost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.afegirHastagAlPost" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Afegeix un hashtag al post de id idPost</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>idPost</strong> &#8211; El id del post al qual es vol afegir el hashtag</li>
+<li><strong>hashthagId</strong> &#8211; El id del hashtag a afegir al post</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.afegirUsuari">
+<code class="descname">afegirUsuari</code><span class="sig-paren">(</span><em>nick</em>, <em>email</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.afegirUsuari"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.afegirUsuari" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Afegeix un nou usuari a la xarxa social. Si el nick ja existeix, s&#8217;evita la creació d&#8217;aquest usuari</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nick</strong> &#8211; És el nick de l&#8217;usuari</li>
+<li><strong>email</strong> &#8211; És el email de l&#8217;usuari</li>
+<li><strong>password</strong> &#8211; És el password de l&#8217;usuari</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">iTICApp</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">afegirUsuari</span><span class="p">(</span><span class="s2">&quot;pere&quot;</span><span class="p">,</span><span class="s2">&quot;pere@gmail.com&quot;</span><span class="p">,</span><span class="s2">&quot;gilisticoexpia&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">afegirUsuari</span><span class="p">(</span><span class="s2">&quot;pere&quot;</span><span class="p">,</span><span class="s2">&quot;pere@gmail.com&quot;</span><span class="p">,</span><span class="s2">&quot;gilisticoexpia&quot;</span><span class="p">)</span>
+<span class="go">El usuari pere ja existeix</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.follow">
+<code class="descname">follow</code><span class="sig-paren">(</span><em>followerNick</em>, <em>followingNick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.follow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.follow" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Fa que un usuari en segueixi a un altre</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>followerNick</strong> &#8211; El nick del usuari que seguirà.</li>
+<li><strong>followingNick</strong> &#8211; El nick de l&#8217;usuari que serà seguit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.posts">
+<code class="descname">posts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.posts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.posts" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Llista per pantalla la informació completa de tots els posts en ordre invers a com s’han
+realitzat.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.postsUser">
+<code class="descname">postsUser</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.postsUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.postsUser" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Obté el llistat d’informació dels posts (contingut) d’un Usuari amb el nick proporcionat
+A continuació segueix uns exemples de funcionament.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; Nom de l&#8217;usuari del qual volem mostrar els posts</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.printFollowers">
+<code class="descname">printFollowers</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.printFollowers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.printFollowers" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Printeja els nicks dels followers d&#8217;un usuari</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; Nick de l&#8217;usuari del qual vols saber l&#8217;informació</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.printFollowing">
+<code class="descname">printFollowing</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.printFollowing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.printFollowing" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Printeja els nicks dels seguits d&#8217;un usuari</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; Nick de l&#8217;usuari del qual vols saber l&#8217;informació</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.printFollowingPosts">
+<code class="descname">printFollowingPosts</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.printFollowingPosts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.printFollowingPosts" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Printeja els posts penjats per els usuaris que el usuari de nick <em>nick</em> segueix cronològicament</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; El nick de l&#8217;usuari</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.publicarPost">
+<code class="descname">publicarPost</code><span class="sig-paren">(</span><em>nick</em>, <em>idHashtag</em>, <em>contingutPost</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.publicarPost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.publicarPost" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Comprova si el nick d’usuari existeix a l’aplicació. Si és el cas, crea el Post, guarda el
+nick d’usuari al Post, afegeix l’objecte Hashtag al Post, afegeix l’objecte Post a l’usuari
+corresponent i afegeix el Post al contenidor de posts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nick</strong> &#8211; El nick de l&#8217;usuari al qual s&#8217;associa el post.</li>
+<li><strong>idHashtag</strong> &#8211; El id del hashtag</li>
+<li><strong>contingutPost</strong> &#8211; El contingut del post</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.userFollow">
+<code class="descname">userFollow</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.userFollow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.userFollow" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Printeja el nombre de seguidors i el nombre de persones que segueix un usuari</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; El nick del qual volem saber el nombre de followers i following</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="iTICApp.iTICApp.users">
+<code class="descname">users</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/iTICApp.html#iTICApp.users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#iTICApp.iTICApp.users" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Llista per pantalla la informació completa dels usuaris de l’aplicatiu, incloent la informació
+dels seus posts.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Interpret.html" title="capítol anterior">Classe Intèrpret</a></li>
+      <li>Next: <a href="User.html" title="capítol següent">Classe User</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/iTICApp.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/iTICApp.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

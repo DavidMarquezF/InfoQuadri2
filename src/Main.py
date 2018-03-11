@@ -86,6 +86,7 @@ def printT(info):
         #. Posts-user: Printeja els posts d'un usuari
         #. Followers-user: Printeja els followers d'un usuari
         #. Following-user: Printeja a qui està seguint l'usuari
+        #. Following-posts: Printeja els posts de les persones que segueix un usuari ordenats cronològicament
 
     :param info: Llista de strings on el primer serà el mode de printeig descrit anteriorment
     """
@@ -110,8 +111,13 @@ def printT(info):
             print "No has introduit el nick d'un usuari"
             return
         i.printFollowing(info[1])
+    elif(ent == "following-posts"):
+        if (len(info) != 2):
+            print "No has introduit el nick d'un usuari"
+            return
+        i.printFollowingPosts(info[1])
     else:
-        print "El primer paràmetre ha de ser users, posts, posts-user, followers-user o following-user"
+        print "El primer paràmetre ha de ser users, posts, posts-user, followers-user, following-user o following-posts"
 
 def afegirHashtags(info):
     """
@@ -145,6 +151,7 @@ def help(i):
     print "2. posts-user -> requereix un altre paràmetre: el nick de l'usuari del qual volem saber els posts. Si ho vols saber de més d'un introdueixne els que necessitis"
     print "3. followers-user -> printeja els nicks dels followers d'un usuari"
     print "4. following-user -> printeja els nicks usuaris que segueix l'usuari"
+    print "5. following-posts -> printeja els posts dels usuaris que segueix l'usuari (el paràmetre necessàri és el nick)"
 
 def follow(nicks):
     """
@@ -172,9 +179,10 @@ def userFollowers(nick):
 if(__name__ == "__main__"):
     usuari(["Ferran"])
     usuari(["David"])
-    usuari(["Biel"])
     usuari(["Eloi"])
     publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
+    publicar(["Eloi", "vida", "ashdoahd", "akjshdkjah"])
+
     print "Per ajuda escriu - help me"
     interpret = Interpret()
     interpret.afegeixOrdre("usuari", usuari)

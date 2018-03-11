@@ -219,3 +219,30 @@ class iTICApp(object):
         for following in self.getUsuaris()[nick].following:
             print following.nick+",",
         print
+
+    def printFollowingPosts(self, nick):
+        """
+        Printeja els posts penjats per els usuaris que el usuari de nick *nick* segueix cronològicament
+
+        :param nick: El nick de l'usuari
+        """
+        if (nick not in self.getUsuaris()):
+            print "El nick no existeix"
+            return
+        if (len(self.getUsuaris()[nick].following) <= 0):
+            print nick, "no segueix a ningú"
+
+        following = self.getUsuaris()[nick].following
+        postsCount=0
+        for post in self.getPosts().values().__reversed__():
+            try:
+                post.nick
+            except AttributeError:
+                continue
+
+            for followingNick in following:
+                if(post.nick == followingNick.nick):
+                    print post
+                    postsCount+=1
+        if(postsCount <= 0):
+            print "No hi ha cap post penjat"
