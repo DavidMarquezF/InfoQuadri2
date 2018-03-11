@@ -58,7 +58,7 @@ class User(object):
         """
         Afegeig un post a la llista de posts associats a aquest usuari
 
-        :param post: El post a afegir (del tipus :class:`Post.Post`)
+        :param post: El post a afegir (del tipus :class:`Posts.Post`)
         """
         self.posts.append(post)
 

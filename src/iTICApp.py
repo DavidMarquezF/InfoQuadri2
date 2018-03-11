@@ -208,6 +208,7 @@ class iTICApp(object):
     def printFollowing(self, nick):
         """
         Printeja els nicks dels seguits d'un usuari
+
         :param nick: Nick de l'usuari del qual vols saber l'informació
         """
         if (nick not in self.getUsuaris()):

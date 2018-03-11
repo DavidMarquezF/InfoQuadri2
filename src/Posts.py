@@ -22,8 +22,8 @@ class Post(object):
     +id                      int       És l'identificador del post. S'incrementa en 1 per cada post.
     +contingut               string    És el contingut del post.
     -date                    Date      És la data en el moment de publicar un post
-    +contenidor              list      Llista de posts
-    +registra_usuari         string    És el nick de l'usuari
+    +contenidorHashtags      list      Llista de posts
+    +nick                    string    És el nick de l'usuari
     ======================= ========= =========================================================================
 
    """
@@ -33,7 +33,7 @@ class Post(object):
         self.id=Post.idd
         self.contingut=contingut
         self.__date= now.strftime("%d-%m-%Y %H:%M")
-        self.contenidor=[]
+        self.contenidorHashtags=[]
         self.registra_usuari("ningu")
         Post.idd+=1
 
@@ -62,12 +62,12 @@ class Post(object):
 
         :param Hashtag: hashtag a afegir
         """
-        self.contenidor.append(Hashtag)
+        self.contenidorHashtags.append(Hashtag)
 
 
     def __str__(self):
         txt="Post id:" + " " + str(self.id) + " " + "info:" + " " + self.contingut + " " + "Date" + " " + self.getDate() + " " + "\n" + "Nick user:" + " " + self.nick + " " + "Hashtags available:" + " "
-        for e in self.contenidor:
+        for e in self.contenidorHashtags:
             txt+=str(e) + " "
         return txt
 
