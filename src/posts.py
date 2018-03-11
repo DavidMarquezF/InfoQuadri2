@@ -1,9 +1,29 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
 """
+======================
+Classe Post i Hashtag
+======================
 
 """
 import datetime
 
 class Post(object):
+    """
+    Aquesta classe s'encarrega de crear un post i emmagatzemar-lo.
+
+   ======================= ========= =========================================================================
+   Atribut                  Tipus                       Significat
+   ======================= ========= =========================================================================
+   +id                      int       És l'identificador del post. S'incrementa en 1 per cada post.
+   +contingut               string    És el contingut del post.
+   -date                    Date      És la data en el moment de publicar un post
+   +contenidor              list      Llista de posts
+   +registra_usuari         string    És el nick de l'usuari
+   ======================= ========= =========================================================================
+
+   """
     idd=1
     def __init__(self,contingut):
         now = datetime.datetime.now()
@@ -26,9 +46,17 @@ class Post(object):
         return iter(str(self.id))
 
     def registra_usuari(self,nick):
+        """
+        Afegeix un usuari
+        :param nick: usuari a afegir
+        """
         self.nick=nick
 
     def afegeix_hashtag(self,Hashtag):
+        """
+        Mètode que permet afegir un objecte Hashtag(id)
+        :param Hashtag: hashtag a afegir
+        """
         self.contenidor.append(Hashtag)
 
 
@@ -40,6 +68,16 @@ class Post(object):
 
 
 class Hashtag(object):
+    """
+    Aquesta classe s'encarrega de crear els hashtags
+    ======================= ========= =========================================================================
+     Atribut                 Tipus                       Significat
+    ======================= ========= =========================================================================
+     +id                     string    És el hashtag que es vol posar.
+   ======================= ========= =========================================================================
+
+
+    """
     def __init__(self,id):
         self.id=id
 
