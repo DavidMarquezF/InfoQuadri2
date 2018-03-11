@@ -8,7 +8,8 @@ Classe iTICApp
 
 """
 from User import *
-from posts import *
+from Posts import *
+from Hashtags import *
 from MainLib import *
 class iTICApp(object):
     """
@@ -18,8 +19,8 @@ class iTICApp(object):
     Atribut                  Tipus                       Significat
     ======================= ========= =========================================================================
     -usuaris                 dict     Diccionari de :class:`User.User` dins de la xarxa social (key = nick)
-    -posts                   dict     Diccionari de :class:`Post.Post` penjats en la xarxa (key = info)
-    -hashtags                dict     Diccionari de :class:`hastag` penjats en la xarxa (key = id)
+    -posts                   dict     Diccionari de :class:`Posts.Post` penjats en la xarxa (key = info)
+    -hashtags                dict     Diccionari de :class:`Hashtags.Hashtag` penjats en la xarxa (key = id)
     ======================= ========= =========================================================================
 
     """
@@ -95,6 +96,12 @@ class iTICApp(object):
         self.getUsuaris()[nick].registra_post(post)
 
     def afegirHastagAlPost(self, idPost, hashthagId):
+        """
+        Afegeix un hashtag al post de id idPost
+
+        :param idPost: El id del post al qual es vol afegir el hashtag
+        :param hashthagId: El id del hashtag a afegir al post
+        """
         if(not checkIfInt(idPost)):
             print "El id del post és un nombre"
             return

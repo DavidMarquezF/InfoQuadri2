@@ -14,15 +14,17 @@ class Post(object):
     """
     Aquesta classe s'encarrega de crear un post i emmagatzemar-lo.
 
-   ======================= ========= =========================================================================
-   Atribut                  Tipus                       Significat
-   ======================= ========= =========================================================================
-   +id                      int       És l'identificador del post. S'incrementa en 1 per cada post.
-   +contingut               string    És el contingut del post.
-   -date                    Date      És la data en el moment de publicar un post
-   +contenidor              list      Llista de posts
-   +registra_usuari         string    És el nick de l'usuari
-   ======================= ========= =========================================================================
+    Els id dels posts es gestionen amb una variable estàtica que es va incrementat cada vegada que es crea un post
+
+    ======================= ========= =========================================================================
+    Atribut                  Tipus                       Significat
+    ======================= ========= =========================================================================
+    +id                      int       És l'identificador del post. S'incrementa en 1 per cada post.
+    +contingut               string    És el contingut del post.
+    -date                    Date      És la data en el moment de publicar un post
+    +contenidor              list      Llista de posts
+    +registra_usuari         string    És el nick de l'usuari
+    ======================= ========= =========================================================================
 
    """
     idd=1
@@ -49,13 +51,15 @@ class Post(object):
     def registra_usuari(self,nick):
         """
         Afegeix un usuari
+
         :param nick: usuari a afegir
         """
         self.nick=nick
 
     def afegeix_hashtag(self,Hashtag):
         """
-        Mètode que permet afegir un objecte Hashtag(id)
+        Mètode que permet afegir un objecte :class:`Hashtags.Hashtag`
+
         :param Hashtag: hashtag a afegir
         """
         self.contenidor.append(Hashtag)
