@@ -10,6 +10,7 @@ import base64
 def encode(key, string):
     """
     Encripta una string a partir d'una clau
+
     :param key: La clau amb la qual s'encriptarà
     :param string: La string a encriptar
     :return: La string encriptada
@@ -28,8 +29,14 @@ def encode(key, string):
 def checkIfInt(number):
     """
     Mira si un numero és int o no
+
     :param number: número donat
     :return: retorna true si és int i false si no
+
+    >>> checkIfInt("1")
+    True
+    >>> checkIfInt("a")
+    False
     """
     try:
         int(number)

@@ -22,7 +22,13 @@ class User(object):
     -email                   string    És l'email de l'usuari
     -password                string    És el password de l'usuari. Quan es mostri per pantalla serà encriptat.
     +posts                   list      Llista de posts de l'usuari (:class:`Post.Post`)
+    +followers               list       Llista de usuaris que segueixen a aquest usuari
+    +following               list       Llista de usuaris que segueix aquest usuari.
     ======================= ========= =========================================================================
+
+    La string de l'usuari serà::
+
+        Usuari: Ferran Email: ferran@exemple.com Encripted password: xN_F1sc=
 
     """
     def __init__(self, nick, email, password):
@@ -51,6 +57,7 @@ class User(object):
     def registra_post(self, post):
         """
         Afegeig un post a la llista de posts associats a aquest usuari
+
         :param post: El post a afegir (del tipus :class:`Post.Post`)
         """
         self.posts.append(post)
@@ -58,6 +65,7 @@ class User(object):
     def addFollower(self, follower):
         """
         Afegeix un usuari a la llista de followers d'aquest usuari
+
         :param follower: Usuari a afegir a la llista dels seguidors (:class:User.User`).
         """
         self.followers.append(follower)
@@ -65,6 +73,7 @@ class User(object):
     def addFollowing(self, following):
         """
         Afegeix un usuari a la llista de following d'aquest usuari
+
         :param following: Usuari a seguir (:class:User.User`).
         """
         self.following.append(following)

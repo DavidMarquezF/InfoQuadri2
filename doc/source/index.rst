@@ -11,6 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   Interpret
+   MainLib
+   Main
+   iTICApp
+   User
 
 
 Indices and tables
