@@ -110,7 +110,9 @@ class iTICApp(object):
             print "Aquest id de post no existeix"
             return
         h = self.afegeixHashtag(hashthagId)
-
+        if(h is None):
+            print "El post ja té aquest hashtag associat"
+            return
         self.getPosts()[int(idPost)].afegeix_hashtag(h)
 
     def users(self):
