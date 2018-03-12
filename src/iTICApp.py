@@ -94,6 +94,7 @@ class iTICApp(object):
         self.afegeixHashtag(idHashtag)
         self.getPosts()[post.id] = post
         self.getUsuaris()[nick].registra_post(post)
+        print "El post s'ha penjat correctament"
 
     def afegirHastagAlPost(self, idPost, hashthagId):
         """
