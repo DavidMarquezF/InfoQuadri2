@@ -24,10 +24,10 @@ class iTICApp(object):
     ======================= ========= =========================================================================
 
     """
-    def __init__(self):
-        self.__usuaris=dict()
-        self.__posts=dict()
-        self.__hastags=dict()
+    def __init__(self, usuaris = dict(), posts = dict(), hashtags = dict()):
+        self.__usuaris=usuaris
+        self.__posts=posts
+        self.__hastags=hashtags
 
 
     def getUsuaris(self):

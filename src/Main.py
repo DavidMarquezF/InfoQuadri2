@@ -146,12 +146,12 @@ def help(i):
     print "- follow <seguidor> <usuari a seguir> -> Es segueix a un usuari"
     print "- followers <nick> -> Printeja el nombre de followers d'un usuari"
     print "- print <ent> [<nick>] -> Per printejar infotmació. Ent pot ser:"
-    print "0. users -> no és  necessari posar més paràmetres. Mostrarà una llista completa d'usuaris"
-    print "1. posts -> tampoc és necessari posr més paràmetres. Mostrarà una llista de tots els posts"
-    print "2. posts-user -> requereix un altre paràmetre: el nick de l'usuari del qual volem saber els posts. Si ho vols saber de més d'un introdueixne els que necessitis"
-    print "3. followers-user -> printeja els nicks dels followers d'un usuari"
-    print "4. following-user -> printeja els nicks usuaris que segueix l'usuari"
-    print "5. following-posts -> printeja els posts dels usuaris que segueix l'usuari (el paràmetre necessàri és el nick)"
+    print "\t0. users -> no és  necessari posar més paràmetres. Mostrarà una llista completa d'usuaris"
+    print "\t1. posts -> tampoc és necessari posr més paràmetres. Mostrarà una llista de tots els posts"
+    print "\t2. posts-user -> requereix un altre paràmetre: el nick de l'usuari del qual volem saber els posts. Si ho vols saber de més d'un introdueixne els que necessitis"
+    print "\t3. followers-user -> printeja els nicks dels followers d'un usuari"
+    print "\t4. following-user -> printeja els nicks usuaris que segueix l'usuari"
+    print "\t5. following-posts -> printeja els posts dels usuaris que segueix l'usuari (el paràmetre necessàri és el nick)"
 
 def follow(nicks):
     """
