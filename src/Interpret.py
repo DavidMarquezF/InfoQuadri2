@@ -66,6 +66,17 @@ class Interpret(object):
             return
         self.getDCom()[nomc] = ordre
 
+    def setCustomHelp(self, c):
+        self.customHelp = c
+
+    def help(self):
+        if(hasattr(self, "customHelp") and self.customHelp != None):
+            self.customHelp()
+        else:
+            keys = sorted(self.getDCom().keys())
+            for key in keys:
+                print key
+
     def run(self):
         """
         Arrenca l’execució d’aquest intèrpret d’ordres. L’intèrpret s’executa indefinidament fins
@@ -80,6 +91,8 @@ class Interpret(object):
             x = raw_input(self.__prompt + " ")
             if(x == "surt" or x == "exit"):
                 break
+            if(x == "ajuda" or x == "help"):
+                self.help()
             par = x.split()
             if (len(par) <= 1):
                 print "Has d'incloure parametres"

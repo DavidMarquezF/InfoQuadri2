@@ -132,11 +132,10 @@ def afegirHashtags(info):
     for hashtagId in hashtags:
         i.afegirHastagAlPost(postId, hashtagId)
 
-def help(i):
+def help():
     """
     Printeja una llista de les funcions existents a l'interpret i com funcionen
 
-    :param i: Paràmetre inútil requerit únicament perquè l'interpret funcioni
     """
     print "Ajuda per a fer instruccions:"
     print "- usuari <nick> -> Crea un usuari"
@@ -192,6 +191,6 @@ if(__name__ == "__main__"):
     interpret.afegeixOrdre("afHashtag", afegirHashtags)
     interpret.afegeixOrdre("follow", follow)
     interpret.afegeixOrdre("followers", userFollowers)
-    interpret.afegeixOrdre("help", help)
+    interpret.setCustomHelp(help)
     interpret.setPrompt("- ")
     interpret.run()
