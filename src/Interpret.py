@@ -50,7 +50,14 @@ class Interpret(object):
     def __init__(self):
         self.__prompt="Prompt Default"
         self.__dcom = dict()
+        self.__alpha = self.defaultStart
+        self.__omega = self.defaultStop
 
+
+    def defaultStart(self):
+        print "Interpret started"
+    def defaultStop(self):
+        print "Interpret stopped"
     def getPrompt(self):
         return self.__prompt
 
@@ -74,6 +81,27 @@ class Interpret(object):
     def setCustomHelp(self, c):
         self.customHelp = c
 
+
+
+    def setBegin(self,f):
+        """
+        Fixa la funció f com l'inicialitzador que es cridarà just abans d'arrencar l'interpret. F és una funció sense
+        paràmetres.
+
+        :param f: La funció que es cridarà quan es comenci el interpret
+        """
+        self.__alpha = f
+
+    def setEnd(self, f):
+        """
+        Fixa la funció f com el finalitzador que es cridarà just abans d'acabar l'execució l'interpret. F és una funció sense
+        paràmetres.
+
+        :param f: La funció que es cridarà quan es comenci el interpret
+        """
+        self.__omega = f
+
+
     def help(self):
         if(hasattr(self, "customHelp") and self.customHelp != None):
             try:
@@ -85,6 +113,7 @@ class Interpret(object):
             for key in keys:
                 print key
 
+
     def run(self):
         """
         Arrenca l’execució d’aquest intèrpret d’ordres. L’intèrpret s’executa indefinidament fins
@@ -95,6 +124,11 @@ class Interpret(object):
         resta de mots els paràmetres d’aquesta ordre. Finalment executa la funció corresponent a
         l’ordre i li passa com a paràmetre la resta de mots en una llista.
         """
+        try:
+            self.__alpha()
+        except TypeError:
+            print "Error: Alpha ha de ser una funció sense paràmetres"
+
         while True:
             x = raw_input(self.__prompt + " ")
             if(x == "surt" or x == "exit"):
@@ -115,8 +149,13 @@ class Interpret(object):
                 print "Has d'incloure com a mínim un  paràmetre"
                 continue
             except KeyError as e:
-                print "L'accio " + e.message + " no existeix"
+                print "La comanda " + e.message + " no existeix"
 
             else:
                 param = [parameter for parameter in par[1:]]
                 self.getDCom()[key](param)
+
+        try:
+            self.__omega()
+        except TypeError:
+            print "Error: Alpha ha de ser una funció sense paràmetres"
