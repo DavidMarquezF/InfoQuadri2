@@ -176,13 +176,13 @@ def userFollowers(nick):
 
 
 if(__name__ == "__main__"):
-    usuari(["Ferran"])
-    usuari(["David"])
-    usuari(["Eloi"])
-    publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
-    publicar(["Eloi", "vida", "ashdoahd", "akjshdkjah"])
+    #usuari(["Ferran"])
+    #usuari(["David"])
+    #usuari(["Eloi"])
+    #publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
+    #publicar(["Eloi", "vida", "ashdoahd", "akjshdkjah"])
 
-    print "Per ajuda escriu - help me"
+    print "Per ajuda escriu - help"
     interpret = Interpret()
     interpret.afegeixOrdre("usuari", usuari)
     interpret.afegeixOrdre("hashtag", hashtag)

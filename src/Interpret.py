@@ -2,11 +2,16 @@
 #-*- coding: utf-8 -*-
 
 """
-=================
-Classe Intèrpret
-=================
+=======================================
+Classe Intèrpret i Excepció d'interpret
+=======================================
 
 """
+class NoParam (Exception):
+    pass
+
+
+
 class Interpret(object):
     """
     Aquesta classe fa que de forma interactiva, es llegeixin ordres de l’usuari que haurà preparat previament
@@ -71,7 +76,10 @@ class Interpret(object):
 
     def help(self):
         if(hasattr(self, "customHelp") and self.customHelp != None):
-            self.customHelp()
+            try:
+                self.customHelp()
+            except:
+                print "Interpret: Custom help must be a function with no parameters"
         else:
             keys = sorted(self.getDCom().keys())
             for key in keys:
@@ -94,13 +102,21 @@ class Interpret(object):
             if(x == "ajuda" or x == "help"):
                 self.help()
             par = x.split()
-            if (len(par) <= 1):
-                print "Has d'incloure parametres"
-                continue
-            key = par[0]
-            if(key not in self.getDCom()):
-                print "L'accio",key,"no existeix"
-                continue
+            try:
+                key = par[0]
+                self.getDCom()[key]
+                if(len(par) <= 1):
+                    raise NoParam
 
-            param = [parameter for parameter in par[1:]]
-            self.getDCom()[key](param)
+            except IndexError:
+                print "Has d'incloure una clau"
+                continue
+            except NoParam:
+                print "Has d'incloure com a mínim un  paràmetre"
+                continue
+            except KeyError as e:
+                print "L'accio " + e.message + " no existeix"
+
+            else:
+                param = [parameter for parameter in par[1:]]
+                self.getDCom()[key](param)
