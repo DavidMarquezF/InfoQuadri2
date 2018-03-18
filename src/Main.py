@@ -22,6 +22,8 @@ __name__ == "__main__" com a una variable global:
 from Interpret import  *
 from iTICApp import *
 from getpass import getpass
+import Exceptions
+import ReadWriteFiles
 
 i = iTICApp()
 
@@ -174,16 +176,41 @@ def userFollowers(nick):
         return
     i.userFollow(nick[0])
 
+def desa():
+    fol = ReadWriteFiles.createUseFolder()
+    posts=[]
+    for post in i.getPosts().values():
+        posts.append(post.desa())
+
+    ReadWriteFiles.writeToFile(fol, ReadWriteFiles.NomFitPosts, posts)
+
+def recupera():
+    posts=[]
+    try:
+        for post in ReadWriteFiles.readlines(ReadWriteFiles.askFolder(), ReadWriteFiles.NomFitPosts):
+            p = Post()
+            if(not p.recupera(post, i.getHashtags())):
+                raise Exceptions.PostError()
+            else:
+                posts.append(p)
+
+    except Exceptions.PostError:
+        print "El post no s'ha pogut convertir correctament"
+    except Exception as e:
+        print e
+
+
 
 if(__name__ == "__main__"):
-    #usuari(["Ferran"])
+    usuari(["Ferran"])
     #usuari(["David"])
     #usuari(["Eloi"])
-    #publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
-    #publicar(["Eloi", "vida", "ashdoahd", "akjshdkjah"])
+    publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
+    publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
 
     print "Per ajuda escriu - help"
     interpret = Interpret()
+    interpret.setEnd(desa)
     interpret.afegeixOrdre("usuari", usuari)
     interpret.afegeixOrdre("hashtag", hashtag)
     interpret.afegeixOrdre("publicar",publicar)
@@ -194,3 +221,5 @@ if(__name__ == "__main__"):
     interpret.setCustomHelp(help)
     interpret.setPrompt("- ")
     interpret.run()
+    recupera()
+
