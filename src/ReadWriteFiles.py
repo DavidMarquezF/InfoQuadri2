@@ -74,5 +74,7 @@ def readlines(folderName, type):
         return
 
     l = f.readlines()
+    for line in range(len(l)):
+        l[line] = l[line].rstrip("\n")
     f.close()
     return l

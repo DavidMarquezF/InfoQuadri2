@@ -176,20 +176,53 @@ def userFollowers(nick):
         return
     i.userFollow(nick[0])
 
+
+#Desa---------------------------------------------------------------------------
 def desa():
     fol = ReadWriteFiles.createUseFolder()
-    posts=[]
+    desaPosts(fol)
+    desaHashtags(fol)
+    desaUsuaris(fol)
+
+def desaPosts(fol):
+    posts = []
     for post in i.getPosts().values():
         posts.append(post.desa())
 
     ReadWriteFiles.writeToFile(fol, ReadWriteFiles.NomFitPosts, posts)
 
+def desaHashtags(fol):
+    hashtags =[]
+    for h in i.getHashtags().values():
+        hashtags.append(h.id)
+
+    ReadWriteFiles.writeToFile(fol, ReadWriteFiles.NomFitHashtags, hashtags)
+
+def desaUsuaris(fol):
+    usuaris = []
+    for user in i.getUsuaris().values():
+        usuaris.append(user.desa())
+
+    ReadWriteFiles.writeToFile(fol, ReadWriteFiles.NomFitUsuaris, usuaris)
+
+
+#Recupera------------------------------------------------------------------------
 def recupera():
-    posts=[]
+    fol =ReadWriteFiles.askFolder()
+    hashtags = dict((value.id, value) for value in recuperaHashtags(fol))
+    posts = dict((value.id, value) for value in recuperaPosts(fol,hashtags))
+    usuaris = recuperaUsuaris(fol, posts)
+
+
+
+
+
+def recuperaPosts(fol,hashtags):
+    posts = []
     try:
-        for post in ReadWriteFiles.readlines(ReadWriteFiles.askFolder(), ReadWriteFiles.NomFitPosts):
+        for post in ReadWriteFiles.readlines(fol, ReadWriteFiles.NomFitPosts):
             p = Post()
-            if(not p.recupera(post, i.getHashtags())):
+            if (not p.recupera(post, hashtags)):
                 raise Exceptions.PostError()
             else:
                 posts.append(p)
@@ -199,13 +232,70 @@ def recupera():
     except Exception as e:
         print e
 
+    return posts
+
+def recuperaUsuaris(fol,posts):
+    usuaris = {}
+    try:
+        for user in ReadWriteFiles.readlines(fol, ReadWriteFiles.NomFitUsuaris):
+            u = User()
+            if (not u.recupera(user, posts)):
+                raise Exceptions.UserError()
+            else:
+                usuaris[u.nick] = u
+
+    except Exceptions.UserError:
+        print "L'usuari no s'ha pogut convertir correctament"
+    except Exception as e:
+        print e
+
+    try:
+        for usuari in usuaris.values():
+            for follower in usuari.followers:
+                if (follower == ""):
+                    continue
+                if(follower not in usuaris):
+                    raise Exceptions.NoUserException(follower)
+                else:
+                    usuari.followers[follower] = usuaris[follower]
+    except Exceptions.NoUserException as e:
+        print "No hi ha cap usuari anomenat", e.message, "en la xarxa social"
+    except Exception as e:
+        print "Excepció al posar followers: ", e.message
+
+    try:
+        for usuari in usuaris.values():
+            for following in usuari.following:
+                if(following == ""):
+                    continue
+                if(following not in usuaris):
+                    raise Exceptions.NoUserException(following)
+                else:
+                    usuari.following[following] = usuaris[following]
+    except Exceptions.NoUserException as e:
+        print "No hi ha cap usuari anomenat", e.message, "en la xarxa social"
+    except Exception as e:
+        print "Excepció al posar following: ", e.message
+
+    return usuaris
+
+
+def recuperaHashtags(fol):
+    hash =[]
+    try:
+        for h in ReadWriteFiles.readlines(fol, ReadWriteFiles.NomFitHashtags):
+            hash.append(Hashtag(h))
+    except Exception as e:
+        print "Error, no s'ha pogut recuperar els hashtags correctament: ", e.message
+    return hash
+
 
 
 if(__name__ == "__main__"):
     usuari(["Ferran"])
     #usuari(["David"])
     #usuari(["Eloi"])
-    publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
+    publicar(["Ferran", "esport", "Holiiii", "akjshdkjah"])
     publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
 
     print "Per ajuda escriu - help"

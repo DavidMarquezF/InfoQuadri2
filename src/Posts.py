@@ -75,7 +75,7 @@ class Post(object):
             hashs = s[3].split(":::")
             date = s[4]
         except Exception as e:
-            print "Error al recuperar el post: " + e.message
+            print "Error al recuperar el post:", e.message
             return False
 
         try:

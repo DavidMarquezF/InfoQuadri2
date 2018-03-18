@@ -8,6 +8,7 @@ Classe User
 
 """
 from MainLib import encode
+import Exceptions
 
 class User(object):
     """
@@ -31,7 +32,7 @@ class User(object):
         Usuari: Ferran Email: ferran@exemple.com Encripted password: xN_F1sc=
 
     """
-    def __init__(self, nick, email, password):
+    def __init__(self, nick ="", email="", password=""):
         self.nick=nick
         self.__email=email
         self.__password=password
@@ -77,9 +78,54 @@ class User(object):
         :param following: Usuari a seguir (:class:User.User`).
         """
         self.following.append(following)
+    def desa(self):
+        separador="\t"
+        txt = self.nick+separador+self.__password+separador+self.__email+separador
+        txt += ":::".join([str(post.id) for post in self.posts]) + separador
+        txt += ":::".join([follower.nick for follower in self.followers]) + separador
+        txt += ":::".join([following.nick for following in self.following]) + separador
+        return txt
+
+    def recupera(self,s, posts):
+        try:
+            s = s.split("\t")
+            nick = s[0]
+            password = s[1]
+            email = s[2]
+            postsS = s[3].split(":::")
+            followers = s[4].split(":::")
+            following = s[5].split(":::")
+        except Exception as e:
+            print "Error al recuperar l'usuari: ", e.message
+            return False
 
 
+        self.nick = nick
+        self.__email = email
+        self.__password = password
+        if(followers != [""]):
+            self.followers = followers
+        if(following != [""]):
+            self.following = following
+        try:
 
+            for post in postsS:
+                post = int(post)
+                if(post in posts):
+                    self.registra_post(posts[post])
+                else:
+                    raise Exceptions.NoPostException(post)
+        except Exceptions.NoHashtagException as er:
+            print "Error. El post",er.message, "no existeix en la xarxa social"
+            return False
+        except AttributeError as at:
+            print "La conversió de post no s'ha fet correctament: ",at.message
+            return False
+        except Exception as e:
+            print "No s'ha pogut convertir el post:", e.message
+            return False
+
+        return True
 
 if(__name__ == "__main__"):
     p1 = User("john24", "john24@gmail.com", "abracadabra")

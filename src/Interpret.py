@@ -157,5 +157,5 @@ class Interpret(object):
 
         try:
             self.__omega()
-        except TypeError:
-            print "Error: Alpha ha de ser una funció sense paràmetres"
+        except TypeError as e:
+            print "Error: Omega ha de ser una funció sense paràmetres",e.message
