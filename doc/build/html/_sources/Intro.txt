@@ -62,4 +62,11 @@ es demanarà si es vol sobreescriure'l.
 D'aquesta manera hem aconseguit que les dades quedin molt més ordenades i més clares i a més a més l'usuari pot triar a on
 guardarles.
 
+UML resultant
+=============
+
+El UML resultant no varia molt de com era a la pràctica 2:
+
+    .. image:: Practica3.png
+
 
