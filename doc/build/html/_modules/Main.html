@@ -272,6 +272,10 @@
 <span class="sd">    Funció que es crida per recuperar totes les dades a partir d&#39;un directori. Si hi ha cap problema recuperant les dades</span>
 <span class="sd">    es demanarà que es crei una nova :class:`iTICApp.iTICApp` o es trii un altre fitxer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">MainLib</span><span class="o">.</span><span class="n">askYorNQuestion</span><span class="p">(</span><span class="s2">&quot;Vol recuperar les dades d&#39;una altra sessió? &quot;</span><span class="p">)):</span>
+        <span class="k">global</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">iTICApp</span><span class="p">()</span>
+        <span class="k">return</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">fol</span> <span class="o">=</span><span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">askFolder</span><span class="p">()</span>
         <span class="n">hashtags</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">value</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">recuperaHashtags</span><span class="p">(</span><span class="n">fol</span><span class="p">))</span>
@@ -285,7 +289,6 @@
         <span class="n">recuperaFallida</span><span class="p">()</span>
         <span class="k">return</span>
     <span class="k">print</span> <span class="s2">&quot;Dades importades correctament&quot;</span>
-    <span class="k">global</span> <span class="n">i</span>
     <span class="n">i</span><span class="o">=</span> <span class="n">iTICApp</span><span class="p">(</span><span class="n">usuaris</span> <span class="o">=</span> <span class="n">usuaris</span><span class="p">,</span> <span class="n">posts</span><span class="o">=</span><span class="n">posts</span><span class="p">,</span> <span class="n">hashtags</span><span class="o">=</span><span class="n">hashtags</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="recuperaFallida"><a class="viewcode-back" href="../Main.html#Main.recuperaFallida">[docs]</a><span class="k">def</span> <span class="nf">recuperaFallida</span><span class="p">():</span>
@@ -415,7 +418,6 @@
     <span class="c1">#publicar([&quot;Ferran&quot;, &quot;esport&quot;, &quot;Holiiii&quot;, &quot;akjshdkjah&quot;])</span>
     <span class="c1">#publicar([&quot;Ferran&quot;, &quot;vida&quot;, &quot;ashdoahd&quot;, &quot;akjshdkjah&quot;])</span>
 
-    <span class="k">print</span> <span class="s2">&quot;Per ajuda escriu - help&quot;</span>
     <span class="n">interpret</span> <span class="o">=</span> <span class="n">Interpret</span><span class="p">()</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">setEnd</span><span class="p">(</span><span class="n">desa</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">setBegin</span><span class="p">(</span><span class="n">recupera</span><span class="p">)</span>

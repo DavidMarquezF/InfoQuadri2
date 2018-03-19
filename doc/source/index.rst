@@ -19,6 +19,7 @@ Contents:
    User
    Posts
    Hashtags
+   ReadWriteFiles
 
 
 Indices and tables

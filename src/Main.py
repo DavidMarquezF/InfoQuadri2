@@ -231,6 +231,10 @@ def recupera():
     Funció que es crida per recuperar totes les dades a partir d'un directori. Si hi ha cap problema recuperant les dades
     es demanarà que es crei una nova :class:`iTICApp.iTICApp` o es trii un altre fitxer.
     """
+    if(not MainLib.askYorNQuestion("Vol recuperar les dades d'una altra sessió? ")):
+        global i
+        i = iTICApp()
+        return
     try:
         fol =ReadWriteFiles.askFolder()
         hashtags = dict((value.id, value) for value in recuperaHashtags(fol))
@@ -244,7 +248,6 @@ def recupera():
         recuperaFallida()
         return
     print "Dades importades correctament"
-    global i
     i= iTICApp(usuaris = usuaris, posts=posts, hashtags=hashtags)
 
 def recuperaFallida():
@@ -374,7 +377,6 @@ if(__name__ == "__main__"):
     #publicar(["Ferran", "esport", "Holiiii", "akjshdkjah"])
     #publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
 
-    print "Per ajuda escriu - help"
     interpret = Interpret()
     interpret.setEnd(desa)
     interpret.setBegin(recupera)

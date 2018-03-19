@@ -129,6 +129,8 @@ class Interpret(object):
         except TypeError:
             print "Error: Alpha ha de ser una funció sense paràmetres"
 
+        print "Per ajuda escriu - help"
+
         while True:
             x = raw_input(self.__prompt + " ")
             if(x == "surt" or x == "exit"):
