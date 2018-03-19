@@ -50,7 +50,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">Hashtags</span> <span class="kn">import</span> <span class="n">Hashtag</span>
-
+<span class="kn">import</span> <span class="nn">Exceptions</span>
 <div class="viewcode-block" id="Post"><a class="viewcode-back" href="../Posts.html#Posts.Post">[docs]</a><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Aquesta classe s&#39;encarrega de crear un post i emmagatzemar-lo.</span>
@@ -69,7 +69,7 @@
 
 <span class="sd">   &quot;&quot;&quot;</span>
     <span class="n">idd</span><span class="o">=</span><span class="mi">1</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">contingut</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">contingut</span> <span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="o">=</span><span class="n">Post</span><span class="o">.</span><span class="n">idd</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">contingut</span><span class="o">=</span><span class="n">contingut</span>
@@ -88,6 +88,67 @@
 
     <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+
+
+    <span class="k">def</span> <span class="nf">desa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">separador</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span>
+        <span class="n">txt</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">+</span><span class="n">separador</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">contingut</span><span class="o">+</span><span class="n">separador</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">nick</span><span class="o">+</span><span class="n">separador</span>
+        <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenidorHashtags</span><span class="p">:</span>
+            <span class="n">txt</span><span class="o">+=</span><span class="n">hashtag</span><span class="o">.</span><span class="n">id</span> <span class="o">+</span> <span class="s2">&quot;:::&quot;</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;:::&quot;</span><span class="p">)</span>
+        <span class="n">txt</span><span class="o">+=</span><span class="n">separador</span><span class="o">+</span><span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__date</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">txt</span>
+
+
+<div class="viewcode-block" id="Post.recupera"><a class="viewcode-back" href="../Posts.html#Posts.Post.recupera">[docs]</a>    <span class="k">def</span> <span class="nf">recupera</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recupera el post a partir de la string amb la que s&#39;ha guardat</span>
+
+<span class="sd">        :param s: la string on hi ha tota la informació</span>
+<span class="sd">        :param hashtags: llista de hashtags de la xarxa social</span>
+<span class="sd">        :return: Retorna True si la recuperació s&#39;ha fet amb èxit. Si no, retorna False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">contingut</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">nick</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">hashs</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:::&quot;</span><span class="p">)</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Error al recuperar el post:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;La data no s&#39;ha pogut convertir correctament: &quot;</span> <span class="o">+</span><span class="n">e</span><span class="o">.</span><span class="n">message</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contingut</span><span class="o">=</span> <span class="n">contingut</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registra_usuari</span><span class="p">(</span><span class="n">nick</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__date</span> <span class="o">=</span> <span class="n">date</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="k">for</span> <span class="n">hashtag</span> <span class="ow">in</span> <span class="n">hashs</span><span class="p">:</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">hashtag</span> <span class="ow">in</span> <span class="n">hashtags</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">afegeix_hashtag</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">hashtag</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">NoHashtagException</span><span class="p">(</span><span class="n">hashtag</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">NoHashtagException</span> <span class="k">as</span> <span class="n">er</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;El hashtag associat a aquest post no existeix en la llista de Hashtags de la web. Hashtag:&quot;</span><span class="p">,</span><span class="n">er</span><span class="o">.</span><span class="n">message</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">at</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;La conversió de hashtags no s&#39;ha fet correctament: &quot;</span><span class="p">,</span><span class="n">at</span><span class="o">.</span><span class="n">message</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;No s&#39;ha pogut convertir el hashtag:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">return</span> <span class="bp">True</span></div>
+
 
 <div class="viewcode-block" id="Post.registra_usuari"><a class="viewcode-back" href="../Posts.html#Posts.Post.registra_usuari">[docs]</a>    <span class="k">def</span> <span class="nf">registra_usuari</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nick</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

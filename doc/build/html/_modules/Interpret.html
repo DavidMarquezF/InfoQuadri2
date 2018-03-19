@@ -43,11 +43,16 @@
 <span class="c1">#-*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">=================</span>
-<span class="sd">Classe Intèrpret</span>
-<span class="sd">=================</span>
+<span class="sd">=======================================</span>
+<span class="sd">Classe Intèrpret i Excepció d&#39;interpret</span>
+<span class="sd">=======================================</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">NoParam</span> <span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+
 <div class="viewcode-block" id="Interpret"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret">[docs]</a><span class="k">class</span> <span class="nc">Interpret</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Aquesta classe fa que de forma interactiva, es llegeixin ordres de l’usuari que haurà preparat previament</span>
@@ -86,7 +91,14 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span><span class="o">=</span><span class="s2">&quot;Prompt Default&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__dcom</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaultStart</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__omega</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">defaultStop</span>
 
+
+    <span class="k">def</span> <span class="nf">defaultStart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;Interpret started&quot;</span>
+    <span class="k">def</span> <span class="nf">defaultStop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;Interpret stopped&quot;</span>
     <span class="k">def</span> <span class="nf">getPrompt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span>
 
@@ -107,6 +119,42 @@
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()[</span><span class="n">nomc</span><span class="p">]</span> <span class="o">=</span> <span class="n">ordre</span></div>
 
+    <span class="k">def</span> <span class="nf">setCustomHelp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">customHelp</span> <span class="o">=</span> <span class="n">c</span>
+
+
+
+<div class="viewcode-block" id="Interpret.setBegin"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.setBegin">[docs]</a>    <span class="k">def</span> <span class="nf">setBegin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fixa la funció f com l&#39;inicialitzador que es cridarà just abans d&#39;arrencar l&#39;interpret. F és una funció sense</span>
+<span class="sd">        paràmetres.</span>
+
+<span class="sd">        :param f: La funció que es cridarà quan es comenci el interpret</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span> <span class="o">=</span> <span class="n">f</span></div>
+
+<div class="viewcode-block" id="Interpret.setEnd"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.setEnd">[docs]</a>    <span class="k">def</span> <span class="nf">setEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fixa la funció f com el finalitzador que es cridarà just abans d&#39;acabar l&#39;execució l&#39;interpret. F és una funció sense</span>
+<span class="sd">        paràmetres.</span>
+
+<span class="sd">        :param f: La funció que es cridarà quan es comenci el interpret</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__omega</span> <span class="o">=</span> <span class="n">f</span></div>
+
+
+    <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;customHelp&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">customHelp</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">customHelp</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;Interpret: Custom help must be a function with no parameters&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+                <span class="k">print</span> <span class="n">key</span>
+
+
 <div class="viewcode-block" id="Interpret.run"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Arrenca l’execució d’aquest intèrpret d’ordres. L’intèrpret s’executa indefinidament fins</span>
@@ -117,21 +165,41 @@
 <span class="sd">        resta de mots els paràmetres d’aquesta ordre. Finalment executa la funció corresponent a</span>
 <span class="sd">        l’ordre i li passa com a paràmetre la resta de mots en una llista.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__alpha</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Error: Alpha ha de ser una funció sense paràmetres&quot;</span>
+
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
             <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;surt&quot;</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;exit&quot;</span><span class="p">):</span>
                 <span class="k">break</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;ajuda&quot;</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;help&quot;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">help</span><span class="p">()</span>
             <span class="n">par</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">par</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
-                <span class="k">print</span> <span class="s2">&quot;Has d&#39;incloure parametres&quot;</span>
-                <span class="k">continue</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()):</span>
-                <span class="k">print</span> <span class="s2">&quot;L&#39;accio&quot;</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="s2">&quot;no existeix&quot;</span>
-                <span class="k">continue</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">par</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">NoParam</span>
 
-            <span class="n">param</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span> <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">par</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()[</span><span class="n">key</span><span class="p">](</span><span class="n">param</span><span class="p">)</span></div></div>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;Has d&#39;incloure una clau&quot;</span>
+                <span class="k">continue</span>
+            <span class="k">except</span> <span class="n">NoParam</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;Has d&#39;incloure com a mínim un  paràmetre&quot;</span>
+                <span class="k">continue</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;La comanda &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span> <span class="o">+</span> <span class="s2">&quot; no existeix&quot;</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">param</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span> <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">par</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()[</span><span class="n">key</span><span class="p">](</span><span class="n">param</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__omega</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Error: Omega ha de ser una funció sense paràmetres&quot;</span><span class="p">,</span><span class="n">e</span><span class="o">.</span><span class="n">message</span></div></div>
 </pre></div>
 
           </div>

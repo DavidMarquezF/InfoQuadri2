@@ -63,6 +63,9 @@
 <span class="kn">from</span> <span class="nn">Interpret</span> <span class="kn">import</span>  <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">iTICApp</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">import</span> <span class="nn">Exceptions</span>
+<span class="kn">import</span> <span class="nn">ReadWriteFiles</span>
+<span class="kn">import</span> <span class="nn">MainLib</span>
 
 <span class="n">i</span> <span class="o">=</span> <span class="n">iTICApp</span><span class="p">()</span>
 
@@ -173,11 +176,10 @@
     <span class="k">for</span> <span class="n">hashtagId</span> <span class="ow">in</span> <span class="n">hashtags</span><span class="p">:</span>
         <span class="n">i</span><span class="o">.</span><span class="n">afegirHastagAlPost</span><span class="p">(</span><span class="n">postId</span><span class="p">,</span> <span class="n">hashtagId</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="help"><a class="viewcode-back" href="../Main.html#Main.help">[docs]</a><span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<div class="viewcode-block" id="help"><a class="viewcode-back" href="../Main.html#Main.help">[docs]</a><span class="k">def</span> <span class="nf">help</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Printeja una llista de les funcions existents a l&#39;interpret i com funcionen</span>
 
-<span class="sd">    :param i: Paràmetre inútil requerit únicament perquè l&#39;interpret funcioni</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">print</span> <span class="s2">&quot;Ajuda per a fer instruccions:&quot;</span>
     <span class="k">print</span> <span class="s2">&quot;- usuari &lt;nick&gt; -&gt; Crea un usuari&quot;</span>
@@ -187,12 +189,12 @@
     <span class="k">print</span> <span class="s2">&quot;- follow &lt;seguidor&gt; &lt;usuari a seguir&gt; -&gt; Es segueix a un usuari&quot;</span>
     <span class="k">print</span> <span class="s2">&quot;- followers &lt;nick&gt; -&gt; Printeja el nombre de followers d&#39;un usuari&quot;</span>
     <span class="k">print</span> <span class="s2">&quot;- print &lt;ent&gt; [&lt;nick&gt;] -&gt; Per printejar infotmació. Ent pot ser:&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;0. users -&gt; no és  necessari posar més paràmetres. Mostrarà una llista completa d&#39;usuaris&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;1. posts -&gt; tampoc és necessari posr més paràmetres. Mostrarà una llista de tots els posts&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;2. posts-user -&gt; requereix un altre paràmetre: el nick de l&#39;usuari del qual volem saber els posts. Si ho vols saber de més d&#39;un introdueixne els que necessitis&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;3. followers-user -&gt; printeja els nicks dels followers d&#39;un usuari&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;4. following-user -&gt; printeja els nicks usuaris que segueix l&#39;usuari&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;5. following-posts -&gt; printeja els posts dels usuaris que segueix l&#39;usuari (el paràmetre necessàri és el nick)&quot;</span></div>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">0. users -&gt; no és  necessari posar més paràmetres. Mostrarà una llista completa d&#39;usuaris&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">1. posts -&gt; tampoc és necessari posr més paràmetres. Mostrarà una llista de tots els posts&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">2. posts-user -&gt; requereix un altre paràmetre: el nick de l&#39;usuari del qual volem saber els posts. Si ho vols saber de més d&#39;un introdueixne els que necessitis&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">3. followers-user -&gt; printeja els nicks dels followers d&#39;un usuari&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">4. following-user -&gt; printeja els nicks usuaris que segueix l&#39;usuari&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">5. following-posts -&gt; printeja els posts dels usuaris que segueix l&#39;usuari (el paràmetre necessàri és el nick)&quot;</span></div>
 
 <div class="viewcode-block" id="follow"><a class="viewcode-back" href="../Main.html#Main.follow">[docs]</a><span class="k">def</span> <span class="nf">follow</span><span class="p">(</span><span class="n">nicks</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -217,15 +219,206 @@
     <span class="n">i</span><span class="o">.</span><span class="n">userFollow</span><span class="p">(</span><span class="n">nick</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
 
 
-<span class="k">if</span><span class="p">(</span><span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">):</span>
-    <span class="n">usuari</span><span class="p">([</span><span class="s2">&quot;Ferran&quot;</span><span class="p">])</span>
-    <span class="n">usuari</span><span class="p">([</span><span class="s2">&quot;David&quot;</span><span class="p">])</span>
-    <span class="n">usuari</span><span class="p">([</span><span class="s2">&quot;Eloi&quot;</span><span class="p">])</span>
-    <span class="n">publicar</span><span class="p">([</span><span class="s2">&quot;Ferran&quot;</span><span class="p">,</span> <span class="s2">&quot;vida&quot;</span><span class="p">,</span> <span class="s2">&quot;ashdoahd&quot;</span><span class="p">,</span> <span class="s2">&quot;akjshdkjah&quot;</span><span class="p">])</span>
-    <span class="n">publicar</span><span class="p">([</span><span class="s2">&quot;Eloi&quot;</span><span class="p">,</span> <span class="s2">&quot;vida&quot;</span><span class="p">,</span> <span class="s2">&quot;ashdoahd&quot;</span><span class="p">,</span> <span class="s2">&quot;akjshdkjah&quot;</span><span class="p">])</span>
+<span class="c1">#Desa---------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="desa"><a class="viewcode-back" href="../Main.html#Main.desa">[docs]</a><span class="k">def</span> <span class="nf">desa</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que s&#39;encarrega de guardar totes les dades de la iTICApp en el directori i fitxers corresponents</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fol</span> <span class="o">=</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">createUseFolder</span><span class="p">()</span>
+    <span class="n">desaPosts</span><span class="p">(</span><span class="n">fol</span><span class="p">)</span>
+    <span class="n">desaHashtags</span><span class="p">(</span><span class="n">fol</span><span class="p">)</span>
+    <span class="n">desaUsuaris</span><span class="p">(</span><span class="n">fol</span><span class="p">)</span></div>
 
-    <span class="k">print</span> <span class="s2">&quot;Per ajuda escriu - help me&quot;</span>
+<div class="viewcode-block" id="desaPosts"><a class="viewcode-back" href="../Main.html#Main.desaPosts">[docs]</a><span class="k">def</span> <span class="nf">desaPosts</span><span class="p">(</span><span class="n">fol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que desa tots els posts en un fitxer específic pels posts</span>
+
+<span class="sd">    :param fol: El nom del directori on s&#39;ha de guardar els posts</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">getPosts</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">posts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">desa</span><span class="p">())</span>
+
+    <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">writeToFile</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">NomFitPosts</span><span class="p">,</span> <span class="n">posts</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="desaHashtags"><a class="viewcode-back" href="../Main.html#Main.desaHashtags">[docs]</a><span class="k">def</span> <span class="nf">desaHashtags</span><span class="p">(</span><span class="n">fol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que desa tots els hashtags en un fitxer específic pels hashtags</span>
+
+<span class="sd">    :param fol: El nom del directori on s&#39;ha de guardar els hashtags</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hashtags</span> <span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">getHashtags</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">hashtags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+    <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">writeToFile</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">NomFitHashtags</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="desaUsuaris"><a class="viewcode-back" href="../Main.html#Main.desaUsuaris">[docs]</a><span class="k">def</span> <span class="nf">desaUsuaris</span><span class="p">(</span><span class="n">fol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que desa tots els usuaris en un fitxer específic pels usuaris</span>
+
+<span class="sd">    :param fol: El nom del directori on s&#39;ha de guardar els usuaris</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">usuaris</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">getUsuaris</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">usuaris</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">desa</span><span class="p">())</span>
+
+    <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">writeToFile</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">NomFitUsuaris</span><span class="p">,</span> <span class="n">usuaris</span><span class="p">)</span></div>
+
+
+<span class="c1">#Recupera------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="recupera"><a class="viewcode-back" href="../Main.html#Main.recupera">[docs]</a><span class="k">def</span> <span class="nf">recupera</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que es crida per recuperar totes les dades a partir d&#39;un directori. Si hi ha cap problema recuperant les dades</span>
+<span class="sd">    es demanarà que es crei una nova :class:`iTICApp.iTICApp` o es trii un altre fitxer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fol</span> <span class="o">=</span><span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">askFolder</span><span class="p">()</span>
+        <span class="n">hashtags</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">value</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">recuperaHashtags</span><span class="p">(</span><span class="n">fol</span><span class="p">))</span>
+        <span class="n">posts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">value</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">recuperaPosts</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span><span class="n">hashtags</span><span class="p">))</span>
+        <span class="n">usuaris</span> <span class="o">=</span> <span class="n">recuperaUsuaris</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">posts</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">usuaris</span> <span class="o">==</span> <span class="bp">False</span> <span class="ow">or</span> <span class="n">posts</span> <span class="o">==</span> <span class="bp">False</span> <span class="ow">or</span> <span class="n">hashtags</span> <span class="o">==</span> <span class="bp">False</span><span class="p">):</span>
+            <span class="n">recuperaFallida</span><span class="p">()</span>
+            <span class="k">return</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">recuperaFallida</span><span class="p">()</span>
+        <span class="k">return</span>
+    <span class="k">print</span> <span class="s2">&quot;Dades importades correctament&quot;</span>
+    <span class="k">global</span> <span class="n">i</span>
+    <span class="n">i</span><span class="o">=</span> <span class="n">iTICApp</span><span class="p">(</span><span class="n">usuaris</span> <span class="o">=</span> <span class="n">usuaris</span><span class="p">,</span> <span class="n">posts</span><span class="o">=</span><span class="n">posts</span><span class="p">,</span> <span class="n">hashtags</span><span class="o">=</span><span class="n">hashtags</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="recuperaFallida"><a class="viewcode-back" href="../Main.html#Main.recuperaFallida">[docs]</a><span class="k">def</span> <span class="nf">recuperaFallida</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Es crida en cas que la recuperació de dades no es pugui fer correctament. Presenta dues opcions: crear una nova :class:`iTICApp.iTICApp`</span>
+<span class="sd">    o triar un altre directori d&#39;on extreure les dades</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;No s&#39;ha pogut recuperar la xarxa correctament&quot;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">MainLib</span><span class="o">.</span><span class="n">askYorNQuestion</span><span class="p">(</span><span class="s2">&quot;Dessitja crear una xarxa social nova? &quot;</span><span class="p">)):</span>
+        <span class="k">global</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">iTICApp</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;Inteni de buscar un altre directori&quot;</span>
+        <span class="n">recupera</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="recuperaPosts"><a class="viewcode-back" href="../Main.html#Main.recuperaPosts">[docs]</a><span class="k">def</span> <span class="nf">recuperaPosts</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span><span class="n">hashtags</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que s&#39;utilitza per recuperar els posts a partir del directori / fitxer on hi són guardats.</span>
+
+<span class="sd">    :param fol: El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació</span>
+<span class="sd">    :param hashtags: Diccionari de :class:`Hashtags.Hashtag` existents en la xarxa social</span>
+<span class="sd">    :return: False si no s&#39;ha pogut fer correctament i llista de posts si sí que s&#39;ha pogut realitzar la recuperació correctament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">NomFitPosts</span><span class="p">):</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">Post</span><span class="p">()</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">recupera</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">PostError</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">posts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">PostError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;El post no s&#39;ha pogut convertir correctament&quot;</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">e</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="n">posts</span></div>
+
+<div class="viewcode-block" id="recuperaUsuaris"><a class="viewcode-back" href="../Main.html#Main.recuperaUsuaris">[docs]</a><span class="k">def</span> <span class="nf">recuperaUsuaris</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span><span class="n">posts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció que s&#39;utilitza per recuperar els usuaris a partir del directori / fitxer on hi són guardats.</span>
+
+<span class="sd">    :param fol: El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació</span>
+<span class="sd">    :param posts: Diccionari de :class:`Posts.Post` existents en la xarxa social</span>
+<span class="sd">    :return: False si no s&#39;ha pogut fer correctament i diccionari d&#39;usuaris si sí que s&#39;ha pogut realitzar la recuperació correctament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">usuaris</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">NomFitUsuaris</span><span class="p">):</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">u</span><span class="o">.</span><span class="n">recupera</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">posts</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">UserError</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">usuaris</span><span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">nick</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+
+    <span class="k">except</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">UserError</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;L&#39;usuari no s&#39;ha pogut convertir correctament&quot;</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">e</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">usuari</span> <span class="ow">in</span> <span class="n">usuaris</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">followersInstance</span><span class="o">=</span><span class="p">[]</span>
+            <span class="k">for</span> <span class="n">follower</span> <span class="ow">in</span> <span class="n">usuari</span><span class="o">.</span><span class="n">followers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">follower</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">follower</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">usuaris</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">NoUserException</span><span class="p">(</span><span class="n">follower</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">followersInstance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">usuaris</span><span class="p">[</span><span class="n">follower</span><span class="p">])</span>
+            <span class="n">usuari</span><span class="o">.</span><span class="n">followers</span> <span class="o">=</span> <span class="n">followersInstance</span>
+    <span class="k">except</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">NoUserException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;No hi ha cap usuari anomenat&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;en la xarxa social&quot;</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;Excepció al posar followers: &quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">usuari</span> <span class="ow">in</span> <span class="n">usuaris</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">followingInstance</span><span class="o">=</span><span class="p">[]</span>
+            <span class="k">for</span> <span class="n">following</span> <span class="ow">in</span> <span class="n">usuari</span><span class="o">.</span><span class="n">following</span><span class="p">:</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">following</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">following</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">usuaris</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">NoUserException</span><span class="p">(</span><span class="n">following</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">followingInstance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">usuaris</span><span class="p">[</span><span class="n">following</span><span class="p">])</span>
+            <span class="n">usuari</span><span class="o">.</span><span class="n">following</span><span class="o">=</span><span class="n">followingInstance</span>
+    <span class="k">except</span> <span class="n">Exceptions</span><span class="o">.</span><span class="n">NoUserException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;No hi ha cap usuari anomenat&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;en la xarxa social&quot;</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;Excepció al posar following: &quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="n">usuaris</span></div>
+
+
+<div class="viewcode-block" id="recuperaHashtags"><a class="viewcode-back" href="../Main.html#Main.recuperaHashtags">[docs]</a><span class="k">def</span> <span class="nf">recuperaHashtags</span><span class="p">(</span><span class="n">fol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Funció per recuperar els hashtags a partir del directori on hi ha el fitxer que guarda la informació d&#39;aquests</span>
+
+<span class="sd">    :param fol: El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació</span>
+<span class="sd">    :return: False si no s&#39;ha pogut fer la conversió correctament i una llista de Hashtags si s&#39;ha pogut fer correctament</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">hash</span> <span class="o">=</span><span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="n">fol</span><span class="p">,</span> <span class="n">ReadWriteFiles</span><span class="o">.</span><span class="n">NomFitHashtags</span><span class="p">):</span>
+            <span class="nb">hash</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Hashtag</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">&quot;Error, no s&#39;ha pogut recuperar els hashtags correctament: &quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="nb">hash</span></div>
+
+
+
+<span class="k">if</span><span class="p">(</span><span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">):</span>
+    <span class="c1">#usuari([&quot;Ferran&quot;])</span>
+    <span class="c1">#usuari([&quot;David&quot;])</span>
+    <span class="c1">#usuari([&quot;Eloi&quot;])</span>
+    <span class="c1">#publicar([&quot;Ferran&quot;, &quot;esport&quot;, &quot;Holiiii&quot;, &quot;akjshdkjah&quot;])</span>
+    <span class="c1">#publicar([&quot;Ferran&quot;, &quot;vida&quot;, &quot;ashdoahd&quot;, &quot;akjshdkjah&quot;])</span>
+
+    <span class="k">print</span> <span class="s2">&quot;Per ajuda escriu - help&quot;</span>
     <span class="n">interpret</span> <span class="o">=</span> <span class="n">Interpret</span><span class="p">()</span>
+    <span class="n">interpret</span><span class="o">.</span><span class="n">setEnd</span><span class="p">(</span><span class="n">desa</span><span class="p">)</span>
+    <span class="n">interpret</span><span class="o">.</span><span class="n">setBegin</span><span class="p">(</span><span class="n">recupera</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;usuari&quot;</span><span class="p">,</span> <span class="n">usuari</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;hashtag&quot;</span><span class="p">,</span> <span class="n">hashtag</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;publicar&quot;</span><span class="p">,</span><span class="n">publicar</span><span class="p">)</span>
@@ -233,9 +426,10 @@
     <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;afHashtag&quot;</span><span class="p">,</span> <span class="n">afegirHashtags</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;follow&quot;</span><span class="p">,</span> <span class="n">follow</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;followers&quot;</span><span class="p">,</span> <span class="n">userFollowers</span><span class="p">)</span>
-    <span class="n">interpret</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="n">help</span><span class="p">)</span>
+    <span class="n">interpret</span><span class="o">.</span><span class="n">setCustomHelp</span><span class="p">(</span><span class="n">help</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">setPrompt</span><span class="p">(</span><span class="s2">&quot;- &quot;</span><span class="p">)</span>
     <span class="n">interpret</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
 </pre></div>
 
           </div>

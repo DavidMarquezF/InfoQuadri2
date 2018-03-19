@@ -43,7 +43,7 @@
 <h1>Classe Post<a class="headerlink" href="#classe-post" title="Link permanent a aquest títol">¶</a></h1>
 <dl class="class">
 <dt id="Posts.Post">
-<em class="property">class </em><code class="descclassname">Posts.</code><code class="descname">Post</code><span class="sig-paren">(</span><em>contingut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Posts.html#Post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Posts.Post" title="Link permanent a aquesta definició">¶</a></dt>
+<em class="property">class </em><code class="descclassname">Posts.</code><code class="descname">Post</code><span class="sig-paren">(</span><em>contingut=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Posts.html#Post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Posts.Post" title="Link permanent a aquesta definició">¶</a></dt>
 <dd><p>Aquesta classe s&#8217;encarrega de crear un post i emmagatzemar-lo.</p>
 <p>Els id dels posts es gestionen amb una variable estàtica que es va incrementat cada vegada que es crea un post</p>
 <table border="1" class="docutils">
@@ -90,6 +90,27 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>Hashtag</strong> &#8211; hashtag a afegir</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Posts.Post.recupera">
+<code class="descname">recupera</code><span class="sig-paren">(</span><em>s</em>, <em>hashtags</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Posts.html#Post.recupera"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Posts.Post.recupera" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Recupera el post a partir de la string amb la que s&#8217;ha guardat</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> &#8211; la string on hi ha tota la informació</li>
+<li><strong>hashtags</strong> &#8211; llista de hashtags de la xarxa social</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">Retorna True si la recuperació s&#8217;ha fet amb èxit. Si no, retorna False</p>
+</td>
 </tr>
 </tbody>
 </table>

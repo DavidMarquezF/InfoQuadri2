@@ -180,12 +180,20 @@ def userFollowers(nick):
 
 #Desa---------------------------------------------------------------------------
 def desa():
+    """
+    Funció que s'encarrega de guardar totes les dades de la iTICApp en el directori i fitxers corresponents
+    """
     fol = ReadWriteFiles.createUseFolder()
     desaPosts(fol)
     desaHashtags(fol)
     desaUsuaris(fol)
 
 def desaPosts(fol):
+    """
+    Funció que desa tots els posts en un fitxer específic pels posts
+
+    :param fol: El nom del directori on s'ha de guardar els posts
+    """
     posts = []
     for post in i.getPosts().values():
         posts.append(post.desa())
@@ -193,6 +201,11 @@ def desaPosts(fol):
     ReadWriteFiles.writeToFile(fol, ReadWriteFiles.NomFitPosts, posts)
 
 def desaHashtags(fol):
+    """
+    Funció que desa tots els hashtags en un fitxer específic pels hashtags
+
+    :param fol: El nom del directori on s'ha de guardar els hashtags
+    """
     hashtags =[]
     for h in i.getHashtags().values():
         hashtags.append(h.id)
@@ -200,6 +213,11 @@ def desaHashtags(fol):
     ReadWriteFiles.writeToFile(fol, ReadWriteFiles.NomFitHashtags, hashtags)
 
 def desaUsuaris(fol):
+    """
+    Funció que desa tots els usuaris en un fitxer específic pels usuaris
+
+    :param fol: El nom del directori on s'ha de guardar els usuaris
+    """
     usuaris = []
     for user in i.getUsuaris().values():
         usuaris.append(user.desa())
@@ -209,6 +227,10 @@ def desaUsuaris(fol):
 
 #Recupera------------------------------------------------------------------------
 def recupera():
+    """
+    Funció que es crida per recuperar totes les dades a partir d'un directori. Si hi ha cap problema recuperant les dades
+    es demanarà que es crei una nova :class:`iTICApp.iTICApp` o es trii un altre fitxer.
+    """
     try:
         fol =ReadWriteFiles.askFolder()
         hashtags = dict((value.id, value) for value in recuperaHashtags(fol))
@@ -226,6 +248,10 @@ def recupera():
     i= iTICApp(usuaris = usuaris, posts=posts, hashtags=hashtags)
 
 def recuperaFallida():
+    """
+    Es crida en cas que la recuperació de dades no es pugui fer correctament. Presenta dues opcions: crear una nova :class:`iTICApp.iTICApp`
+    o triar un altre directori d'on extreure les dades
+    """
     print "No s'ha pogut recuperar la xarxa correctament"
     if(MainLib.askYorNQuestion("Dessitja crear una xarxa social nova? ")):
         global i
@@ -234,11 +260,14 @@ def recuperaFallida():
         print "Inteni de buscar un altre directori"
         recupera()
 
-
-
-
-
 def recuperaPosts(fol,hashtags):
+    """
+    Funció que s'utilitza per recuperar els posts a partir del directori / fitxer on hi són guardats.
+
+    :param fol: El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació
+    :param hashtags: Diccionari de :class:`Hashtags.Hashtag` existents en la xarxa social
+    :return: False si no s'ha pogut fer correctament i llista de posts si sí que s'ha pogut realitzar la recuperació correctament
+    """
     posts = []
     try:
         for post in ReadWriteFiles.readlines(fol, ReadWriteFiles.NomFitPosts):
@@ -258,6 +287,13 @@ def recuperaPosts(fol,hashtags):
     return posts
 
 def recuperaUsuaris(fol,posts):
+    """
+    Funció que s'utilitza per recuperar els usuaris a partir del directori / fitxer on hi són guardats.
+
+    :param fol: El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació
+    :param posts: Diccionari de :class:`Posts.Post` existents en la xarxa social
+    :return: False si no s'ha pogut fer correctament i diccionari d'usuaris si sí que s'ha pogut realitzar la recuperació correctament
+    """
     usuaris = {}
     try:
         for user in ReadWriteFiles.readlines(fol, ReadWriteFiles.NomFitUsuaris):
@@ -314,6 +350,12 @@ def recuperaUsuaris(fol,posts):
 
 
 def recuperaHashtags(fol):
+    """
+    Funció per recuperar els hashtags a partir del directori on hi ha el fitxer que guarda la informació d'aquests
+
+    :param fol: El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació
+    :return: False si no s'ha pogut fer la conversió correctament i una llista de Hashtags si s'ha pogut fer correctament
+    """
     hash =[]
     try:
         for h in ReadWriteFiles.readlines(fol, ReadWriteFiles.NomFitHashtags):
