@@ -24,6 +24,7 @@ from iTICApp import *
 from getpass import getpass
 import Exceptions
 import ReadWriteFiles
+import MainLib
 
 i = iTICApp()
 
@@ -208,10 +209,30 @@ def desaUsuaris(fol):
 
 #Recupera------------------------------------------------------------------------
 def recupera():
-    fol =ReadWriteFiles.askFolder()
-    hashtags = dict((value.id, value) for value in recuperaHashtags(fol))
-    posts = dict((value.id, value) for value in recuperaPosts(fol,hashtags))
-    usuaris = recuperaUsuaris(fol, posts)
+    try:
+        fol =ReadWriteFiles.askFolder()
+        hashtags = dict((value.id, value) for value in recuperaHashtags(fol))
+        posts = dict((value.id, value) for value in recuperaPosts(fol,hashtags))
+        usuaris = recuperaUsuaris(fol, posts)
+
+        if(usuaris == False or posts == False or hashtags == False):
+            recuperaFallida()
+            return
+    except:
+        recuperaFallida()
+        return
+    print "Dades importades correctament"
+    global i
+    i= iTICApp(usuaris = usuaris, posts=posts, hashtags=hashtags)
+
+def recuperaFallida():
+    print "No s'ha pogut recuperar la xarxa correctament"
+    if(MainLib.askYorNQuestion("Dessitja crear una xarxa social nova? ")):
+        global i
+        i = iTICApp()
+    else:
+        print "Inteni de buscar un altre directori"
+        recupera()
 
 
 
@@ -229,8 +250,10 @@ def recuperaPosts(fol,hashtags):
 
     except Exceptions.PostError:
         print "El post no s'ha pogut convertir correctament"
+        return False
     except Exception as e:
         print e
+        return False
 
     return posts
 
@@ -246,36 +269,46 @@ def recuperaUsuaris(fol,posts):
 
     except Exceptions.UserError:
         print "L'usuari no s'ha pogut convertir correctament"
+        return False
     except Exception as e:
         print e
+        return False
 
     try:
         for usuari in usuaris.values():
+            followersInstance=[]
             for follower in usuari.followers:
                 if (follower == ""):
                     continue
                 if(follower not in usuaris):
                     raise Exceptions.NoUserException(follower)
                 else:
-                    usuari.followers[follower] = usuaris[follower]
+                    followersInstance.append(usuaris[follower])
+            usuari.followers = followersInstance
     except Exceptions.NoUserException as e:
         print "No hi ha cap usuari anomenat", e.message, "en la xarxa social"
+        return False
     except Exception as e:
         print "Excepció al posar followers: ", e.message
+        return False
 
     try:
         for usuari in usuaris.values():
+            followingInstance=[]
             for following in usuari.following:
                 if(following == ""):
                     continue
                 if(following not in usuaris):
                     raise Exceptions.NoUserException(following)
                 else:
-                    usuari.following[following] = usuaris[following]
+                    followingInstance.append(usuaris[following])
+            usuari.following=followingInstance
     except Exceptions.NoUserException as e:
         print "No hi ha cap usuari anomenat", e.message, "en la xarxa social"
+        return False
     except Exception as e:
         print "Excepció al posar following: ", e.message
+        return False
 
     return usuaris
 
@@ -287,20 +320,22 @@ def recuperaHashtags(fol):
             hash.append(Hashtag(h))
     except Exception as e:
         print "Error, no s'ha pogut recuperar els hashtags correctament: ", e.message
+        return False
     return hash
 
 
 
 if(__name__ == "__main__"):
-    usuari(["Ferran"])
+    #usuari(["Ferran"])
     #usuari(["David"])
     #usuari(["Eloi"])
-    publicar(["Ferran", "esport", "Holiiii", "akjshdkjah"])
-    publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
+    #publicar(["Ferran", "esport", "Holiiii", "akjshdkjah"])
+    #publicar(["Ferran", "vida", "ashdoahd", "akjshdkjah"])
 
     print "Per ajuda escriu - help"
     interpret = Interpret()
     interpret.setEnd(desa)
+    interpret.setBegin(recupera)
     interpret.afegeixOrdre("usuari", usuari)
     interpret.afegeixOrdre("hashtag", hashtag)
     interpret.afegeixOrdre("publicar",publicar)
@@ -311,5 +346,4 @@ if(__name__ == "__main__"):
     interpret.setCustomHelp(help)
     interpret.setPrompt("- ")
     interpret.run()
-    recupera()
 

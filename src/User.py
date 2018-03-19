@@ -107,23 +107,24 @@ class User(object):
             self.followers = followers
         if(following != [""]):
             self.following = following
-        try:
+        if(postsS != [""]):
+            try:
 
-            for post in postsS:
-                post = int(post)
-                if(post in posts):
-                    self.registra_post(posts[post])
-                else:
-                    raise Exceptions.NoPostException(post)
-        except Exceptions.NoHashtagException as er:
-            print "Error. El post",er.message, "no existeix en la xarxa social"
-            return False
-        except AttributeError as at:
-            print "La conversió de post no s'ha fet correctament: ",at.message
-            return False
-        except Exception as e:
-            print "No s'ha pogut convertir el post:", e.message
-            return False
+                for post in postsS:
+                    post = int(post)
+                    if(post in posts):
+                        self.registra_post(posts[post])
+                    else:
+                        raise Exceptions.NoPostException(post)
+            except Exceptions.NoHashtagException as er:
+                print "Error. El post",er.message, "no existeix en la xarxa social"
+                return False
+            except AttributeError as at:
+                print "La conversió de post no s'ha fet correctament: ",at.message
+                return False
+            except Exception as e:
+                print "No s'ha pogut convertir el post:", e.message
+                return False
 
         return True
 
