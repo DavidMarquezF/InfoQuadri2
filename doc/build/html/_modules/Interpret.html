@@ -143,7 +143,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__omega</span> <span class="o">=</span> <span class="n">f</span></div>
 
 
-    <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Interpret.help"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.help">[docs]</a>    <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mostra per pantalla ajuda (si s&#39;ha posat ajuda customitzada es mostrarà aquesta i si no una llista de les claus)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;customHelp&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">customHelp</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">customHelp</span><span class="p">()</span>
@@ -152,7 +155,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
-                <span class="k">print</span> <span class="n">key</span>
+                <span class="k">print</span> <span class="n">key</span></div>
 
 
 <div class="viewcode-block" id="Interpret.run"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

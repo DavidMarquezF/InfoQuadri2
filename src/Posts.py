@@ -50,6 +50,11 @@ class Post(object):
 
 
     def desa(self):
+        """
+        Converteix la classe en string
+
+        :return: La string en la que la classe està codificada
+        """
         separador="\t"
         txt=str(self.id)+separador+self.contingut+separador+self.nick+separador
         for hashtag in self.contenidorHashtags:

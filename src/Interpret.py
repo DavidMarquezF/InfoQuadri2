@@ -103,6 +103,9 @@ class Interpret(object):
 
 
     def help(self):
+        """
+        Mostra per pantalla ajuda (si s'ha posat ajuda customitzada es mostrarà aquesta i si no una llista de les claus)
+        """
         if(hasattr(self, "customHelp") and self.customHelp != None):
             try:
                 self.customHelp()

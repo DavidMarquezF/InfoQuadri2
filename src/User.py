@@ -78,7 +78,13 @@ class User(object):
         :param following: Usuari a seguir (:class:User.User`).
         """
         self.following.append(following)
+
     def desa(self):
+        """
+        Converteix la classe en string
+
+        :return: La string en la que la classe està codificada
+        """
         separador="\t"
         txt = self.nick+separador+self.__password+separador+self.__email+separador
         txt += ":::".join([str(post.id) for post in self.posts]) + separador
@@ -87,6 +93,13 @@ class User(object):
         return txt
 
     def recupera(self,s, posts):
+        """
+        Recupera el user a partir de la string amb la que s'ha guardat
+
+        :param s: la string on hi ha tota la informació
+        :param posts: llista de posts de la xarxa social
+        :return: Retorna True si la recuperació s'ha fet amb èxit. Si no, retorna False
+        """
         try:
             s = s.split("\t")
             nick = s[0]

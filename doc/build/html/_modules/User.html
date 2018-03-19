@@ -119,15 +119,28 @@
 <span class="sd">        :param following: Usuari a seguir (:class:User.User`).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">following</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">following</span><span class="p">)</span></div>
-    <span class="k">def</span> <span class="nf">desa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="User.desa"><a class="viewcode-back" href="../User.html#User.User.desa">[docs]</a>    <span class="k">def</span> <span class="nf">desa</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converteix la classe en string</span>
+
+<span class="sd">        :return: La string en la que la classe està codificada</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">separador</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nick</span><span class="o">+</span><span class="n">separador</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">__password</span><span class="o">+</span><span class="n">separador</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">__email</span><span class="o">+</span><span class="n">separador</span>
         <span class="n">txt</span> <span class="o">+=</span> <span class="s2">&quot;:::&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">post</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">posts</span><span class="p">])</span> <span class="o">+</span> <span class="n">separador</span>
         <span class="n">txt</span> <span class="o">+=</span> <span class="s2">&quot;:::&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">follower</span><span class="o">.</span><span class="n">nick</span> <span class="k">for</span> <span class="n">follower</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">followers</span><span class="p">])</span> <span class="o">+</span> <span class="n">separador</span>
         <span class="n">txt</span> <span class="o">+=</span> <span class="s2">&quot;:::&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">following</span><span class="o">.</span><span class="n">nick</span> <span class="k">for</span> <span class="n">following</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">following</span><span class="p">])</span> <span class="o">+</span> <span class="n">separador</span>
-        <span class="k">return</span> <span class="n">txt</span>
+        <span class="k">return</span> <span class="n">txt</span></div>
 
-    <span class="k">def</span> <span class="nf">recupera</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">,</span> <span class="n">posts</span><span class="p">):</span>
+<div class="viewcode-block" id="User.recupera"><a class="viewcode-back" href="../User.html#User.User.recupera">[docs]</a>    <span class="k">def</span> <span class="nf">recupera</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">s</span><span class="p">,</span> <span class="n">posts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recupera el user a partir de la string amb la que s&#39;ha guardat</span>
+
+<span class="sd">        :param s: la string on hi ha tota la informació</span>
+<span class="sd">        :param posts: llista de posts de la xarxa social</span>
+<span class="sd">        :return: Retorna True si la recuperació s&#39;ha fet amb èxit. Si no, retorna False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">nick</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -167,7 +180,7 @@
                 <span class="k">print</span> <span class="s2">&quot;No s&#39;ha pogut convertir el post:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
                 <span class="k">return</span> <span class="bp">False</span>
 
-        <span class="k">return</span> <span class="bp">True</span></div>
+        <span class="k">return</span> <span class="bp">True</span></div></div>
 
 <span class="k">if</span><span class="p">(</span><span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">):</span>
     <span class="n">p1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;john24&quot;</span><span class="p">,</span> <span class="s2">&quot;john24@gmail.com&quot;</span><span class="p">,</span> <span class="s2">&quot;abracadabra&quot;</span><span class="p">)</span>
