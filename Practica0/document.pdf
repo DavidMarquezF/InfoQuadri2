@@ -1,0 +1,301 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<< /F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 6 0 R >>
+endobj
+2 0 obj
+<< /BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font >>
+endobj
+3 0 obj
+<< /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font >>
+endobj
+4 0 obj
+<< /BaseFont /Courier-Bold /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font >>
+endobj
+5 0 obj
+<< /BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font >>
+endobj
+6 0 obj
+<< /BaseFont /Courier-Oblique /Encoding /WinAnsiEncoding /Name /F5 /Subtype /Type1 /Type /Font >>
+endobj
+7 0 obj
+<< /Contents 14 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 13 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+8 0 obj
+<< /Outlines 10 0 R /PageLabels 15 0 R /PageMode /UseNone /Pages 13 0 R /Type /Catalog >>
+endobj
+9 0 obj
+<< /Author () /CreationDate (D:20180213115714-01'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20180213115714-01'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (T\355tol principal) /Trapped /False >>
+endobj
+10 0 obj
+<< /Count 3 /First 11 0 R /Last 11 0 R /Type /Outlines >>
+endobj
+11 0 obj
+<< /Count 1 /Dest [ 7 0 R /XYZ 62.69291 707.0236 0 ] /First 12 0 R /Last 12 0 R /Parent 10 0 R /Title (Apartat) >>
+endobj
+12 0 obj
+<< /Dest [ 7 0 R /XYZ 62.69291 644.0236 0 ] /Parent 11 0 R /Title (Subapartat) >>
+endobj
+13 0 obj
+<< /Count 1 /Kids [ 7 0 R ] /Type /Pages >>
+endobj
+14 0 obj
+<< /Length 5191 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 169.3749 0 Td (T\355tol principal) Tj T* -169.3749 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 719.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (: author : Pere Pi) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 686.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Apartat) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 656.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 2.23881 Tw (Aquest es el primer apartat. Escriviu-lo aixi com el veieu aqui. Fixeu-vos que , com en Python, les) Tj T* 0 Tw (tabulacions son molt importants ates que determinen l\222estructura del document.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 626.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf 0 0 0 rg (Subapartat) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 596.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.487126 Tw (Tambe podeu escriure enumeracions i llistes convencionals usant una sintaxi molt natural com la que) Tj T* 0 Tw (segueix:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 590.0236 cm
+Q
+q
+1 0 0 1 62.69291 536.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 48 cm
+Q
+q
+1 0 0 1 20 48 cm
+Q
+q
+1 0 0 1 20 36 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Primer element) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Segon element - Primera subllista - Segona subllista) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 12 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Tercer element) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 536.0236 cm
+Q
+q
+1 0 0 1 62.69291 506.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .277633 Tw (Una altra facilitat molt corrent es la de poder inserir codi o exemples de programacio d\222una forma senzilla) Tj T* 0 Tw (i elegant com per exemple:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 376.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 468.6898 120 re B*
+Q
+q
+.960784 .960784 .862745 rg
+n 0 96 18 12 re f*
+.960784 .960784 .862745 rg
+n 24 96 42 12 re f*
+.960784 .960784 .862745 rg
+n 66 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 72 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 78 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 84 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 96 12 12 re f*
+.960784 .960784 .862745 rg
+n 0 84 18 12 re f*
+.960784 .960784 .862745 rg
+n 0 72 192 12 re f*
+.960784 .960784 .862745 rg
+n 0 60 18 12 re f*
+.960784 .960784 .862745 rg
+n 0 48 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 48 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 48 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 36 18 12 re f*
+.960784 .960784 .862745 rg
+n 24 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 36 36 12 12 re f*
+.960784 .960784 .862745 rg
+n 54 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 60 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 24 12 12 re f*
+.960784 .960784 .862745 rg
+n 42 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 54 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 66 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 78 24 12 12 re f*
+.960784 .960784 .862745 rg
+n 96 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 48 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 60 12 12 12 re f*
+.960784 .960784 .862745 rg
+n 78 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 0 36 12 re f*
+.960784 .960784 .862745 rg
+n 42 0 6 12 re f*
+BT 1 0 0 1 0 98 Tm 12 TL /F3 10 Tf 0 .501961 0 rg (def) Tj /F4 10 Tf 0 0 0 rg ( ) Tj 0 0 1 rg (exemple) Tj 0 0 0 rg (\() Tj 0 0 0 rg (a) Tj 0 0 0 rg (,) Tj 0 0 0 rg (b) Tj 0 0 0 rg (\):) Tj 0 0 0 rg  T* /F5 10 Tf .729412 .129412 .129412 rg (""") Tj T* (Una funci\363 per exemplificar reST) Tj T* (""") Tj /F4 10 Tf 0 0 0 rg  T* 0 0 0 rg (x) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (=) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (a) Tj 0 0 0 rg  T* /F3 10 Tf 0 .501961 0 rg (for) Tj /F4 10 Tf 0 0 0 rg ( ) Tj 0 0 0 rg (i) Tj 0 0 0 rg ( ) Tj /F3 10 Tf .666667 .133333 1 rg (in) Tj /F4 10 Tf 0 0 0 rg ( ) Tj 0 0 0 rg (b) Tj 0 0 0 rg (:) Tj 0 0 0 rg  T* (    ) Tj /F3 10 Tf 0 .501961 0 rg (if) Tj /F4 10 Tf 0 0 0 rg ( ) Tj 0 0 0 rg (i) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (%) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (2) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (==) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (0) Tj 0 0 0 rg (:) Tj 0 0 0 rg  T* (        ) Tj 0 0 0 rg (x) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (+=) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (a) Tj 0 0 0 rg  T* /F3 10 Tf 0 .501961 0 rg (return) Tj /F4 10 Tf 0 0 0 rg ( ) Tj 0 0 0 rg (x) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+ 
+endstream
+endobj
+15 0 obj
+<< /Nums [ 0 16 0 R ] >>
+endobj
+16 0 obj
+<< /S /D /St 1 >>
+endobj
+xref
+0 17
+0000000000 65535 f
+0000000075 00000 n
+0000000149 00000 n
+0000000259 00000 n
+0000000374 00000 n
+0000000487 00000 n
+0000000595 00000 n
+0000000711 00000 n
+0000000920 00000 n
+0000001028 00000 n
+0000001307 00000 n
+0000001384 00000 n
+0000001518 00000 n
+0000001619 00000 n
+0000001682 00000 n
+0000006930 00000 n
+0000006974 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com)
+ [(o-\204DX\256\013\270o\312r\235\321\235F\331) (o-\204DX\256\013\270o\312r\235\321\235F\331)]
+ /Info 9 0 R /Root 8 0 R /Size 17 >>
+startxref
+7011
+%%EOF

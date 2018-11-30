@@ -1,0 +1,23 @@
+El objectiu de __repr__ és ser desambigu
+
+El objectiu de __str__ és ser llegible
+
+
+Si tenim dues temps guardats:
+>>> str(a)
+'2015-06-11 04:35:48.542095+00:00'
+>>> str(b)
+'2015-06-11 04:35:48.542095+00:00'
+
+De moment semblen iguales, i la string és llegible.
+
+>>> repr(a)
+'datetime.datetime(2015, 6, 11, 4, 35, 48, 542095, tzinfo=<UTC>)'
+>>> repr(b)
+"'2015-06-11 04:35:48.542095+00:00'"
+
+__repr__ de a sembla més una commanda que es podria posar al intèrpret.  És a dir __repr__ s'utilitza per
+tenir la representació string "oficial"de l'objecte; en canvi __str__ és més aviat per printejar la string
+de l'objecte d'una manera "maca" o que es pugui entendre millor.
+
+Si una classe defineix __repr__ però no __str__ , __repr__ s'utilitzarà com a la representació string de l'objecte.

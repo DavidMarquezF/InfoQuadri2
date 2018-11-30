@@ -1,0 +1,291 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+"""
+==============
+Mòdul explora
+==============
+
+Aquest mòdul és l'executable que s'encarrega de rebre l'input de l'usuari i actuar consequentent.
+
+Hi ha les següents comandes:
+
+    1. LinkCommand -v: Comanda opcional per especificar un link. Si no s'especifica es posarà el link on hi ha tots els csv.
+    2. SensorCommand -s: Comanda utiltizada per especificar els sensors dels quals es vol extreure la informació. És opcional (el sensor de default és  el 0)
+    #. DayCommand -d: El dia del qual es vol treure les dades. El format ha de ser dd/mm/yyyy. És la única obligatòria
+    #. ToDayCommand -t: S'utilitza per especificar un interval. És opcional.
+
+Quan s'agafava un interval massa gran de dies, la recusivitat excedia la profunditat màxima establerta per python.
+Amb sys.setrecursionlimit(10000) es pot aconseguir ampliar aquest límit, fent que no ens peti el programa.
+
+"""
+
+#Si vols que sigui executable des de tot l'ordinador posar aquest fitxer a la carpeta bin de home
+#Per fer que no hagis d'escriure el .py has d'escriure a la terminal mv nomfitxer.py nomComanda
+
+import sys, SensorTransf
+from DataFetcher import DataFetcher
+from DsPlot import DataSetPlot
+from datetime import datetime
+
+class RequiredDay(Exception):
+    pass
+class NotACommand(Exception):
+    pass
+class InvalidLink(Exception):
+    pass
+
+LinkCommand="-v"
+SensorCommand="-s"
+ToDayCommand="-t"
+DayCommand="-d"
+
+DefaultValue=-1
+
+def getArg(args,key, defaultValue = DefaultValue):
+    """
+    A partir del diccionari d'arguments, la clau de la comanda i el defaultValue retornarà el valor assignat a aquella
+    comanda per l'usuari
+
+    :param args: Diccionari de totes les comandes que ha introduit l'usuari amb els seus valors
+    :param key: La clau de la comanda de la qual es vol obtenir el valor
+    :param defaultValue: El valor de normal que prendrà si no se l'hi ha assignat cap valor a la comanda
+    :return: El valor assignat a la clau
+    """
+    if(key not in args.keys()):
+        return defaultValue
+    return FormatValues(key, args[key])
+
+
+def ArgsToDict():
+    """
+    Converteix els arguments passats a un diccionari. Si els paràmetres parells (index 0,2,4,6...) no són cap comanda existent,
+    es dispararà una excepció. Si l'última comanda no té un valor a darrera també ho farà.
+
+    Si no s'inclou la comanda -d, que és l'única totalment obligatòria el programa dispararà una excepció
+
+    :return: Un diccionari amb les commandes i els seus valors assignats
+    """
+    a =sys.argv[1:]
+    args = dict()
+    try:
+        for value in range(0, len(a),2):
+            if(a[value] != LinkCommand and a[value] != SensorCommand and a[value] != ToDayCommand and a[value] != ToDayCommand and a[value] != DayCommand):
+                raise NotACommand(a[value])
+            args[a[value]] = a[value + 1]
+        if (DayCommand not in args.keys()):
+            raise RequiredDay()
+    except NotACommand as e:
+        print "\033[01;31mError\033[00m -",e.args[0],"is not a correct command"
+        exit()
+    except IndexError:
+        print "\033[01;31mError\033[00m - A command must always be followed by a value (check the last command)"
+        exit()
+    except RequiredDay:
+        print "\033[01;31mError\033[00m - The command", DayCommand,"is required"
+        exit()
+
+    return args
+
+
+
+def formatLink(link):
+    """
+    S'ocupa de comprobar que el link sigui vàlid = comença amb http
+    Si no comença amb http no el considerem vàlid i per tant es dispararà un error
+
+    :param link: El link
+    :return: El link tal com estava anteriorment si estava correcte.
+    """
+    try:
+        if link.startswith("http"):
+            return link
+        raise InvalidLink
+    except InvalidLink:
+        print "Link proporcionat incorrecte: ",link
+        exit()
+
+def formatSensor(sensorString):
+    """
+    Formateja la string de sensors:
+        * Fa un split amb les ,
+        * Comproba si es poden passar els elements a int.
+        * Si es poden passar, els convertirà a int i retornarà la llista
+        * Si no es poden passar, dispararà una excepció i pararà el programa
+
+    :param sensorString:
+    :return: Llista de sensors
+    """
+    s=sensorString.split(',')
+    try:
+        for i,e in enumerate(s):
+            if checkIfInt(e):
+                if(int(e) >= 6 or int(e) < 0):
+                    print "\033[01;31mError\033[00m - Sensor number doesn't exist"
+                    exit()
+                s[i]=int(e)
+            else:
+                raise ValueError
+        return s
+    except ValueError:
+        print "\033[01;31mError\033[00m - Format incorrecte dels sensors"
+        exit()
+
+def formatDay(daystring):
+    """
+    A partir de la string del dia generarà un :class:`datetime.datetime`
+    Si la conversió es pot fer correctament et retornarà el datetime.
+    Si no es pot fer correctament dispararà una excepció i es pararà el programa
+
+    :param daystring: El dia en format string
+    :return: Dia passat a :class:`datetime.datetime`
+    """
+    #s=daystring.split('_')
+    try:
+        return datetime.strptime(daystring,"%d/%m/%Y")
+    except ValueError:
+        print "\033[01;31mError\033[00m - La date que has passat no és correcte"
+        exit()
+
+FormatOptions = {
+        LinkCommand: formatLink,
+        SensorCommand: formatSensor,
+        ToDayCommand: formatDay,
+        DayCommand: formatDay
+    }
+
+def FormatValues(key,value):
+    """
+    Formateja els valors a partir de la comanda especificada (si s'ha de passar a datetime, etc.) i el seu valor.
+
+    :param key: La clau de la comanda
+    :param value: El valor de la comanda (serà sempre string perquè encara no estarà formatejat)
+    :return: El valor formatejat
+    """
+    return FormatOptions[key](value)
+
+
+
+def getDataset():
+    """
+    Aquesta funció s'encarrega d'obtenir els datasets:
+        * Primerament obté els paràmetres, comproba que són correctes i els formateja.
+        * Informa que s'està baixant les dades.
+        * Crea un diccionari de datasets amb tots els datasets obtinguts
+
+    :return:
+    """
+    args = ArgsToDict()
+    linkCommand = getArg(args, LinkCommand)
+    sensorCommand = getArg(args, SensorCommand, [0])
+    dayCommand = getArg(args, DayCommand)
+    toDayCommand = getArg(args, ToDayCommand)
+
+
+    sensorText = ", ".join(str(x) for x in sensorCommand)
+
+    if(toDayCommand != DefaultValue):
+        dayText = "from day " + dayCommand.strftime("%d/%m/%y") + " to " + toDayCommand.strftime("%d/%m/%y")
+    else:
+        dayText = "of day " + dayCommand.strftime("%d/%m/%y")
+
+    print "Downloading dataset from {0} of sensors: {1} {2} ...".format(linkCommand if linkCommand != DefaultValue
+                                                else("https://ocwitic.epsem.upc.edu/assignatures/tecpro/laboratori-material/dadespractica6/"),
+                                                sensorText, dayText)
+
+    if(linkCommand == DefaultValue):
+        df = DataFetcher()
+    else:
+        df = DataFetcher(linkCommand)
+
+    datasetDict = dict()
+    if(toDayCommand == DefaultValue):
+        for sensor in sensorCommand:
+            datasetDict[sensor] = df.fetch(dayCommand, sensor)
+    else:
+        for sensor in sensorCommand:
+            datasetDict[sensor] = df.fetch_interval(dayCommand, toDayCommand, sensor)
+
+    return datasetDict
+
+
+
+def normalizeValuesForAll(datasetDict):
+    """
+    Normalitza tots els datasets del diccionari
+
+    :param datasetDict: El diccionari de clau sensor i de valor dataset
+    """
+    print "Normalizing values for all datasets..."
+    for sensor, dataset in datasetDict.items():
+        SensorTransf.normalize(dataset, sensor)
+
+def decimateAll(datasetDict):
+    """
+    Aplica decimate a tots els datasets del diccionari
+
+    :param datasetDict: El diccionari de clau sensor i de valor dataset
+    """
+    print "Decimating datasets..."
+    return {key : dataset.decimate() for key, dataset in datasetDict.items()}
+
+def mitjanaMobilAll(datasetDict):
+    """
+    Fa la mitjana mòbil de tots els datasets del diccionari
+
+    :param datasetDict: El diccionari de clau sensor i de valor dataset
+    """
+    print "Applying moving average to datasets..."
+    return {key : dataset.movingAverage() for key, dataset in datasetDict.items()}
+
+def visualizeAll(datasetDict):
+    """
+    Mostra el gràfic amb tots els datasets
+
+    :param datasetDict: El diccionari de clau sensor i de valor dataset
+    """
+    print "Plotting datasets..."
+    plot = DataSetPlot()
+    for dataset in datasetDict.values():
+        plot.plot(dataset)
+    print "Showing the graph..."
+    plot.show()
+
+def getIndex(command):
+    try:
+        return sys.argv[1:].index(command)
+    except ValueError:
+        return -1
+def checkIfInt(number):
+    """
+    Mira si un numero és int o no
+
+    :param number: número donat
+    :return: retorna true si és int i false si no
+
+    >>> checkIfInt("1")
+    True
+    >>> checkIfInt("a")
+    False
+    """
+    try:
+        int(number)
+        return True
+    except ValueError:
+        return False
+
+
+
+if (__name__ == "__main__"):
+    sys.setrecursionlimit(5000)
+    print "-----------------"
+    print "--Process start--"
+    print "-----------------"
+    print
+    datasetDict = getDataset()
+    normalizeValuesForAll(datasetDict)
+    datasetDict =  decimateAll(datasetDict)
+    datasetDict = mitjanaMobilAll(datasetDict)
+    datasetDict = visualizeAll(datasetDict)
+    print "Thank you for using this service!"
+

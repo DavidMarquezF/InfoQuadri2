@@ -1,0 +1,634 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<< /F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R >>
+endobj
+2 0 obj
+<< /BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font >>
+endobj
+3 0 obj
+<< /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font >>
+endobj
+4 0 obj
+<< /BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font >>
+endobj
+5 0 obj
+<< /BaseFont /Courier-Bold /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font >>
+endobj
+6 0 obj
+<< /Contents 12 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 11 0 R /Resources << /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ] >> /Rotate 0 /Trans <<  >> 
+  /Type /Page >>
+endobj
+7 0 obj
+<< /Outlines 9 0 R /PageLabels 13 0 R /PageMode /UseNone /Pages 11 0 R /Type /Catalog >>
+endobj
+8 0 obj
+<< /Author (David Marquez i Ferran Godoy) /CreationDate (D:20180402221757-01'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20180402221757-01'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (Pr\340ctica 4:Control de versions i treball concurrent) /Trapped /False >>
+endobj
+9 0 obj
+<< /Count 1 /First 10 0 R /Last 10 0 R /Type /Outlines >>
+endobj
+10 0 obj
+<< /Dest [ 6 0 R /XYZ 62.69291 665.0236 0 ] /Parent 9 0 R /Title (Classe Fraccio) >>
+endobj
+11 0 obj
+<< /Count 1 /Kids [ 6 0 R ] /Type /Pages >>
+endobj
+12 0 obj
+<< /Length 13337 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 28 Tm /F2 20 Tf 24 TL 52.10488 0 Td (Pr\340ctica 4:Control de versions i treball) Tj T* 130.61 0 Td (concurrent) Tj T* -182.7149 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 692.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 36.93937 0 Td (Author:) Tj T* -36.93937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (David Marquez i Ferran Godoy) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 677.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 48.03937 0 Td (Date:) Tj T* -48.03937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (11/03/2018) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 644.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Classe Fraccio) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 626.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Aquesta classe s'encarrega de les operacions necess\340ries amb fraccions.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 608.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (T\351 dues variables:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 602.0236 cm
+Q
+q
+1 0 0 1 62.69291 566.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (1.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Numerador) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 12 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (2.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Denominador) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 566.0236 cm
+Q
+q
+1 0 0 1 62.69291 536.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .767045 Tw (Hem fet que es simplifiqui sola \(es fa en el constructor, cridant una variable privada __simplifica que ho) Tj T* 0 Tw (fa\).) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 518.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Aquesta classe pot realitzar les seg\374ents operacions:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 512.0236 cm
+Q
+q
+1 0 0 1 62.69291 422.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 84 cm
+Q
+q
+1 0 0 1 20 84 cm
+Q
+q
+1 0 0 1 20 72 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (1.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Suma) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 66 cm
+Q
+q
+1 0 0 1 20 54 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (2.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Resta) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 48 cm
+Q
+q
+1 0 0 1 20 36 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (3.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Multiplicaci\363) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 18 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (4.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Divisi\363) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 12 cm
+Q
+q
+1 0 0 1 20 0 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (5.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Negaci\363) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 422.0236 cm
+Q
+q
+1 0 0 1 62.69291 404.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Tamb\351 hem gestionat una mica els errors possibles \(crear fraccions amb strings, etc.\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 386.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Un doctest de la classe seria el seguent:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 160.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 468.6898 216 re B*
+Q
+q
+.960784 .960784 .862745 rg
+n 0 192 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 192 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 192 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 192 24 12 re f*
+.960784 .960784 .862745 rg
+n 54 192 42 12 re f*
+.960784 .960784 .862745 rg
+n 102 192 36 12 re f*
+.960784 .960784 .862745 rg
+n 144 192 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 36 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 48 180 42 12 re f*
+.960784 .960784 .862745 rg
+n 90 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 96 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 108 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 114 180 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 168 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 168 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 168 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 168 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 168 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 168 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 168 6 12 re f*
+.960784 .960784 .862745 rg
+n 96 168 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 156 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 156 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 156 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 144 12 12 re f*
+.960784 .960784 .862745 rg
+n 42 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 54 144 42 12 re f*
+.960784 .960784 .862745 rg
+n 96 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 108 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 114 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 120 144 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 132 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 132 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 132 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 132 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 132 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 132 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 132 12 12 re f*
+.960784 .960784 .862745 rg
+n 102 132 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 120 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 120 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 120 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 108 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 108 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 114 108 12 12 re f*
+.960784 .960784 .862745 rg
+n 126 108 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 96 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 84 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 84 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 114 84 12 12 re f*
+.960784 .960784 .862745 rg
+n 126 84 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 72 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 72 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 72 6 12 re f*
+.960784 .960784 .862745 rg
+n 18 72 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 60 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 60 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 114 60 12 12 re f*
+.960784 .960784 .862745 rg
+n 126 60 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 48 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 48 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 48 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 36 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 36 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 114 36 12 12 re f*
+.960784 .960784 .862745 rg
+n 126 36 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 24 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 24 12 30 12 re f*
+.960784 .960784 .862745 rg
+n 60 12 24 12 re f*
+.960784 .960784 .862745 rg
+n 84 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 90 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 96 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 102 12 6 12 re f*
+.960784 .960784 .862745 rg
+n 0 0 6 12 re f*
+.960784 .960784 .862745 rg
+n 6 0 6 12 re f*
+.960784 .960784 .862745 rg
+n 12 0 6 12 re f*
+.960784 .960784 .862745 rg
+n 18 0 6 12 re f*
+BT 1 0 0 1 0 194 Tm 12 TL /F3 10 Tf .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (from) Tj /F3 10 Tf 0 0 0 rg ( ) Tj /F4 10 Tf 0 0 1 rg (fraccio) Tj /F3 10 Tf 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (import) Tj /F3 10 Tf 0 0 0 rg ( ) Tj .4 .4 .4 rg (*) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (f) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (=) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (Fraccio) Tj 0 0 0 rg (\() Tj .4 .4 .4 rg (2) Tj 0 0 0 rg (,) Tj .4 .4 .4 rg (4) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj 0 0 0 rg (f) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (1) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (2) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (f1) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (=) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (Fraccio) Tj 0 0 0 rg (\() Tj .4 .4 .4 rg (3) Tj 0 0 0 rg (,) Tj .4 .4 .4 rg (4) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj 0 0 0 rg (f1) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (3) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (4) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj 0 0 0 rg (f) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (+) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (f1) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (5) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (4) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj 0 0 0 rg (f) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (-) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (f1) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (-) Tj .4 .4 .4 rg (1) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (4) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj 0 0 0 rg (f) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (*) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (f1) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (3) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (8) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj 0 0 0 rg (f) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (/) Tj 0 0 0 rg ( ) Tj 0 0 0 rg (f1) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (2) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (3) Tj 0 0 0 rg  T* .4 .4 .4 rg (>) Tj (>) Tj (>) Tj 0 0 0 rg ( ) Tj /F4 10 Tf 0 .501961 0 rg (print) Tj /F3 10 Tf 0 0 0 rg ( ) Tj 0 .501961 0 rg (repr) Tj 0 0 0 rg (\() Tj .4 .4 .4 rg (-) Tj 0 0 0 rg (f) Tj 0 0 0 rg (\)) Tj 0 0 0 rg  T* .4 .4 .4 rg (-) Tj .4 .4 .4 rg (1) Tj .4 .4 .4 rg (/) Tj .4 .4 .4 rg (2) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+ 
+endstream
+endobj
+13 0 obj
+<< /Nums [ 0 14 0 R ] >>
+endobj
+14 0 obj
+<< /S /D /St 1 >>
+endobj
+xref
+0 15
+0000000000 65535 f
+0000000075 00000 n
+0000000139 00000 n
+0000000249 00000 n
+0000000364 00000 n
+0000000472 00000 n
+0000000585 00000 n
+0000000794 00000 n
+0000000901 00000 n
+0000001244 00000 n
+0000001320 00000 n
+0000001424 00000 n
+0000001487 00000 n
+0000014882 00000 n
+0000014926 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com)
+ [(C.\011\212\033\(\343i\240\022mtS\305&\026) (C.\011\212\033\(\343i\240\022mtS\305&\026)]
+ /Info 8 0 R /Root 7 0 R /Size 15 >>
+startxref
+14963
+%%EOF
