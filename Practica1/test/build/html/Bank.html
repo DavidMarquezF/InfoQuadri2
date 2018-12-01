@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Classe Bank &mdash; Practica 1 1.0.0b2 documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0b2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 1 1.0.0b2 documentació" href="index.html" />
+    <link rel="prev" title="Classe Usuari" href="Usuari.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-Bank"></span><div class="section" id="classe-bank">
+<span id="bank-link"></span><h1>Classe Bank<a class="headerlink" href="#classe-bank" title="Link permanent a aquest títol">¶</a></h1>
+<p>Gesiona una banc utilitzant una llista d&#8217;usuaris:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="12%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Atribut</th>
+<th class="head">Tipus</th>
+<th class="head">Significat</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>+name</td>
+<td>string</td>
+<td>Nom del banc</td>
+</tr>
+<tr class="row-odd"><td>-usuaris</td>
+<td>dict</td>
+<td>Diccionari de <a class="reference internal" href="Usuari.html#Usuari.UsuariBank" title="Usuari.UsuariBank"><code class="xref py py-class docutils literal"><span class="pre">Usuari.UsuariBank</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="funcionament">
+<h2>Funcionament<a class="headerlink" href="#funcionament" title="Link permanent a aquest títol">¶</a></h2>
+<dl class="class">
+<dt id="Bank.Bank">
+<em class="property">class </em><code class="descclassname">Bank.</code><code class="descname">Bank</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Bank.html#Bank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Bank.Bank" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Aquesta és la classe que se&#8217;n encarrega de gestionar els usuaris d&#8217;un banc. Té funcions
+per afergir, treure, accedir, printejar el bank, etc.</p>
+<p>Per accedir a un usuari primer se&#8217;t demana el nom. Si aquest és vàlid, et mostra una llista d&#8217;opcions que es poden fer.
+En el cas de voler eliminar la compta no se&#8217;t demana la contrassenya de l&#8217;usuari (per si és el bank que la vol borrar).
+Però per ingressar o treure diners si que se&#8217;t demana el password per poder fer les accions.</p>
+<p>Per mostrar la string es fara lo següent:</p>
+<div class="highlight-python"><div class="highlight"><pre>Nom: Ferran BankAccount: Data: 23-02-2018 17:27 CompteBancari: Codi IBAN: ES23 Entitat: 6442 Oficina: 5258 Num Compte: 107580686908: 0.0   INACTIVE
+</pre></div>
+</div>
+<dl class="method">
+<dt id="Bank.Bank._Bank__menuUsuari">
+<code class="descname">_Bank__menuUsuari</code><span class="sig-paren">(</span><em>usuari</em><span class="sig-paren">)</span><a class="headerlink" href="#Bank.Bank._Bank__menuUsuari" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>S&#8217;encarrega de mostrar una llista d&#8217;opcions per l&#8217;usuari:</p>
+<ol class="arabic simple">
+<li>Ingressar diners - Per poder ingressar diners al seu compte</li>
+<li>Treure diners - Per poder retirar diners del seu compte (si la compta està inactiva ja no et deixarà entrar-hi)</li>
+<li>Mostra info bancaria - Mostra la informacio bancaria de l&#8217;usuari</li>
+<li>Borrar compta - Mostrarà un missatge de confirmació i si es confirma la compta serà eliminada del banc.</li>
+<li>Exit - Per sortir del menú d&#8217;usuari i tornar al menú del banc.</li>
+</ol>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>usuari</strong> &#8211; El usuari al qual s&#8217;haurà de referenciar a l&#8217;hora d&#8217;ingressar, treure diners, borrar, etc.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Bank.Bank.afegirUsuari">
+<code class="descname">afegirUsuari</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Bank.html#Bank.afegirUsuari"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Bank.Bank.afegirUsuari" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>S&#8217;encarrega d&#8217;afegir un usuari al bank. Crea un id aleatori i un interestRate i monthlyServiceCharge també aleatoris.
+El que fa és crear un <a class="reference internal" href="BankAccount.html#BankAccount.BankAccount" title="BankAccount.BankAccount"><code class="xref py py-class docutils literal"><span class="pre">BankAccount.BankAccount</span></code></a> amb un nom i contrassenya assignats pel usuari amb un balance inicial de 0€.
+Aquest usuari és afegit a la llista d&#8217;usuaris del banc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Bank.Bank.entraUsuari">
+<code class="descname">entraUsuari</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Bank.html#Bank.entraUsuari"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Bank.Bank.entraUsuari" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Per accedir al menú d&#8217;usuari d&#8217;un usuari dels usuaris existents.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Bank.askNumberOption">
+<code class="descclassname">Bank.</code><code class="descname">askNumberOption</code><span class="sig-paren">(</span><em>question</em>, <em>numbers</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Bank.html#askNumberOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Bank.askNumberOption" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Fa que l&#8217;usuari trii una opcio de les proposades en un menu printejat previament a la crida de la funció</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>question</strong> &#8211; La pregunta que es vol fer a l&#8217;usuari</li>
+<li><strong>numbers</strong> &#8211; Quantes opcions hi ha</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">La opcio vàlida triada per l&#8217;usuari</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Bank.askYorNQuestion">
+<code class="descclassname">Bank.</code><code class="descname">askYorNQuestion</code><span class="sig-paren">(</span><em>question</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Bank.html#askYorNQuestion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Bank.askYorNQuestion" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Pregunta una pregunta de sí o no.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>question</strong> &#8211; La pregunta que es vol fer a l&#8217;usuari</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">True o False depenent del que ha triat l&#8217;usuari</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Taula de Contingut</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Classe Bank</a><ul>
+<li><a class="reference internal" href="#funcionament">Funcionament</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Usuari.html" title="capítol anterior">Classe Usuari</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Bank.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Marquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/Bank.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
