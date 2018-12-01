@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Classe Intèrpret &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="index.html" />
+    <link rel="prev" title="Welcome to Practica 2’s documentation!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-Interpret"></span><div class="section" id="classe-interpret">
+<h1>Classe Intèrpret<a class="headerlink" href="#classe-interpret" title="Link permanent a aquest títol">¶</a></h1>
+<dl class="class">
+<dt id="Interpret.Interpret">
+<em class="property">class </em><code class="descclassname">Interpret.</code><code class="descname">Interpret</code><a class="reference internal" href="_modules/Interpret.html#Interpret"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Interpret.Interpret" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Aquesta classe fa que de forma interactiva, es llegeixin ordres de l’usuari que haurà preparat previament
+i les vagi executant una a una.
+És un intèrpret d&#8217;ordres configurable.Això significa que per
+usar-lo primer cal configurar-lo. Configurar-lo consisteix a dir-li quines ordres ha de conèixer i
+què han de fer.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">c1</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="k">print</span> <span class="s2">&quot;executo l’ordre 1: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">c2</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="k">print</span> <span class="s2">&quot;executo l’ordre 2: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">Interpret</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">setPrompt</span><span class="p">(</span><span class="s2">&quot;∗∗&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;llista&quot;</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">afegeixOrdre</span><span class="p">(</span><span class="s2">&quot;bloqueja&quot;</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="go">∗∗ llista usuaris</span>
+<span class="go">executo l’ordre 1: usuaris</span>
+<span class="go">∗∗ bloqueja pere</span>
+<span class="go">executo l’ordre 2: pere</span>
+<span class="go">∗∗ surt</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Atribut</th>
+<th class="head">Tipus</th>
+<th class="head">Significat</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-prompt</td>
+<td>string</td>
+<td>Emmagatzema el prompt que usarà l’intèrpret.</td>
+</tr>
+<tr class="row-odd"><td>-dcom</td>
+<td>dict</td>
+<td>És  el diccionari que emmagatzema les ordres conegudes per el intèrpret.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="Interpret.Interpret.afegeixOrdre">
+<code class="descname">afegeixOrdre</code><span class="sig-paren">(</span><em>nomc</em>, <em>ordre</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Interpret.html#Interpret.afegeixOrdre"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Interpret.Interpret.afegeixOrdre" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Afegeix una ordre al diccionari d&#8217;ordres amb una clau
+:param nomc: La clau que s&#8217;utilitzarà per invocar la ordre
+:param ordre: La funció que s&#8217;emmagatzemarà amb la clau nomc (el paràmetre de la funció serà una llista de strings)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Interpret.Interpret.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Interpret.html#Interpret.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Interpret.Interpret.run" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Arrenca l’execució d’aquest intèrpret d’ordres. L’intèrpret s’executa indefinidament fins
+que l’usuari escriu l’ordre surt.</p>
+<p>A cada cicle d’interpretació, l’intèrpret escriu el prompt, llegeix un string del teclat, l’anal-
+itza separant els mots que el formen. El primer mot considera que és un nom d’ordre i la
+resta de mots els paràmetres d’aquesta ordre. Finalment executa la funció corresponent a
+l’ordre i li passa com a paràmetre la resta de mots en una llista.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítol anterior">Welcome to Practica 2&#8217;s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Interpret.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/Interpret.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
