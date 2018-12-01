@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pràctica 3: Gestió de la Xarxa Social iTICApp: Ampliació &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="index.html" />
+    <link rel="next" title="Main Lib" href="MainLib.html" />
+    <link rel="prev" title="Welcome to Practica 2’s documentation!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="practica-3-gestio-de-la-xarxa-social-iticapp-ampliacio">
+<h1>Pràctica 3: Gestió de la Xarxa Social iTICApp: Ampliació<a class="headerlink" href="#practica-3-gestio-de-la-xarxa-social-iticapp-ampliacio" title="Link permanent a aquest títol">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">David Marquez i Ferran Godoy</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">19/03/2018</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="objectius">
+<h2>Objectius<a class="headerlink" href="#objectius" title="Link permanent a aquest títol">¶</a></h2>
+<p>L’objectiu d’aquesta pràctica és prendre contacte amb els programes estructurats en base a
+classes d’objectes. El context del projecte se sitúa en una xarxa social, en el marc d’un projecte
+de recerca sobre els seus usuaris i els posts que publiquen a la xarxa.
+Després d’haver lliurat la pràctica 2, en que es construı̈a una aplicació per a la gestió d’usuaris
+i posts, en aquesta ampliació ens proposem els següents objectius:</p>
+<ul class="simple">
+<li>Millorar lleugerament l’intèrpret d’ordres.</li>
+<li>Afegir ordres per desar les dades en un fitxer i recuperar-les més endavant.</li>
+<li>Simplificar la lectura i gravació de dades.</li>
+</ul>
+<p>Les tasques cal fer-les durant aquesta sessió de laboratori i no haurien de suposar més temps.
+Aquesta pràctica també us la podeu prendre com una auto-avaluació. Haurı́eu de veure-us
+capaços de poder-la fer individualment si heu treballat convenientment la pràctica 2.</p>
+</div>
+<div class="section" id="temps-dedicat-a-les-tasques">
+<h2>Temps dedicat a les tasques<a class="headerlink" href="#temps-dedicat-a-les-tasques" title="Link permanent a aquest títol">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="26%" />
+<col width="29%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tasca</th>
+<th class="head">David M.</th>
+<th class="head">Ferran G.</th>
+<th class="head">Total</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T1</td>
+<td>5min</td>
+<td>5min</td>
+<td>10min</td>
+</tr>
+<tr class="row-odd"><td>T2</td>
+<td>10min</td>
+<td>0min</td>
+<td>10min</td>
+</tr>
+<tr class="row-even"><td>T3</td>
+<td>20min</td>
+<td>20min</td>
+<td>40min</td>
+</tr>
+<tr class="row-odd"><td>T4</td>
+<td>2:00h</td>
+<td>2:00h</td>
+<td>4h</td>
+</tr>
+<tr class="row-even"><td>T5</td>
+<td>10min</td>
+<td>10min</td>
+<td>20min</td>
+</tr>
+<tr class="row-odd"><td>T6</td>
+<td>10min</td>
+<td>10min</td>
+<td>20min</td>
+</tr>
+<tr class="row-even"><td>T7</td>
+<td>10min</td>
+<td>10min</td>
+<td>20min</td>
+</tr>
+<tr class="row-odd"><td>Total</td>
+<td>3:05h</td>
+<td>2:55h</td>
+<td>6h</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="toc-personal">
+<h2>Toc personal<a class="headerlink" href="#toc-personal" title="Link permanent a aquest títol">¶</a></h2>
+<p>Tot i que aquesta pràctica no requeria el toc personal, nosaltres al implementar desa i recupera ho hem d&#8217;una manera
+lleugerament diferent a la plantejada en les tasques. Hem fet que es creein 3 fitxers (un per usuaris, l&#8217;altre per posts
+i l&#8217;últim per hashtags) i aquests es guarden dins d&#8217;un directori que especifica l&#8217;usuari. Cada vegada que s&#8217;inicialitza
+l&#8217;intèrpret es demana des de quin directori es vol carregar les dades. Si el directori no existeix o no conté els fitxers
+requerits es seguirà demanant fins que se&#8217;n tingui un de vàlid.</p>
+<p>A partir d&#8217;aquest directori es recuperaran totes les dades i si no hi ha cap problema es crearà la instancia de iTICApp amb
+aquestes dadaes. En el cas que no es puguin recuperar les dades (alguna malformació en el fitxer, etc.) Es donarà dues opcions:
+crear una iTICApp nova o seleccionar un altre directori.</p>
+<p>Quan es surt de l&#8217;intèrpret es demana a on es vol guardar la informació (directori). Si el directori no existeix ses crearà
+un directori nou amb els fitxers necessaris. Si el directori existeix i té els fitxer correctes a dins
+es demanarà si es vol sobreescriure&#8217;l.</p>
+<p>D&#8217;aquesta manera hem aconseguit que les dades quedin molt més ordenades i més clares i a més a més l&#8217;usuari pot triar a on
+guardarles.</p>
+</div>
+<div class="section" id="uml-resultant">
+<h2>UML resultant<a class="headerlink" href="#uml-resultant" title="Link permanent a aquest títol">¶</a></h2>
+<p>El UML resultant no varia molt de com era a la pràctica 2:</p>
+<blockquote>
+<div><img alt="_images/Practica3.png" src="_images/Practica3.png" />
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Taula de Contingut</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pràctica 3: Gestió de la Xarxa Social iTICApp: Ampliació</a><ul>
+<li><a class="reference internal" href="#objectius">Objectius</a></li>
+<li><a class="reference internal" href="#temps-dedicat-a-les-tasques">Temps dedicat a les tasques</a></li>
+<li><a class="reference internal" href="#toc-personal">Toc personal</a></li>
+<li><a class="reference internal" href="#uml-resultant">UML resultant</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítol anterior">Welcome to Practica 2&#8217;s documentation!</a></li>
+      <li>Next: <a href="MainLib.html" title="capítol següent">Main Lib</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Intro.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/Intro.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Main &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="index.html" />
+    <link rel="next" title="Classe Intèrpret i Excepció d’interpret" href="Interpret.html" />
+    <link rel="prev" title="Main Lib" href="MainLib.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-Main"></span><div class="section" id="main">
+<h1>Main<a class="headerlink" href="#main" title="Link permanent a aquest títol">¶</a></h1>
+<p>Aquest mòdul és el que s&#8217;haurà d&#8217;inicialitzar per obtenir tota la funcionalitat.
+Per començar es crearà una instancia de la <a class="reference internal" href="iTICApp.html#iTICApp.iTICApp" title="iTICApp.iTICApp"><code class="xref py py-class docutils literal"><span class="pre">iTICApp.iTICApp</span></code></a> i de <a class="reference internal" href="Interpret.html#Interpret.Interpret" title="Interpret.Interpret"><code class="xref py py-class docutils literal"><span class="pre">Interpret.Interpret</span></code></a>. Al inicialitzar
+l&#8217;intèrpret se li passarà unes quantes funcions predefinides. L&#8217;usuari podrà saber quines són escribint la commanda
+help me, que li explicarà que fa cada funció i quins paràmetres requereix. A partir d&#8217;aquí, el que s&#8217;encarregarà
+d&#8217;organitzar-ho tot serà l&#8217;intèrpret</p>
+<p>Per guardar la xarxa social i que sigui accessible per totes les funcions hem inicialitzat <a class="reference internal" href="iTICApp.html#iTICApp.iTICApp" title="iTICApp.iTICApp"><code class="xref py py-class docutils literal"><span class="pre">iTICApp.iTICApp</span></code></a> a fora de
+__name__ == &#8220;__main__&#8221; com a una variable global:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">i</span> <span class="o">=</span> <span class="n">iTICApp</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="Main.afegirHashtags">
+<code class="descclassname">Main.</code><code class="descname">afegirHashtags</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#afegirHashtags"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.afegirHashtags" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>S&#8217;utilitza per afegir varis hashtags en un post ja creat</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>info</strong> &#8211; Llista de strings on el primer serà el id del post i la resta seran els nous hashtags a afegir</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.desa">
+<code class="descclassname">Main.</code><code class="descname">desa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#desa"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.desa" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que s&#8217;encarrega de guardar totes les dades de la iTICApp en el directori i fitxers corresponents</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.desaHashtags">
+<code class="descclassname">Main.</code><code class="descname">desaHashtags</code><span class="sig-paren">(</span><em>fol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#desaHashtags"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.desaHashtags" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que desa tots els hashtags en un fitxer específic pels hashtags</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>fol</strong> &#8211; El nom del directori on s&#8217;ha de guardar els hashtags</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.desaPosts">
+<code class="descclassname">Main.</code><code class="descname">desaPosts</code><span class="sig-paren">(</span><em>fol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#desaPosts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.desaPosts" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que desa tots els posts en un fitxer específic pels posts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>fol</strong> &#8211; El nom del directori on s&#8217;ha de guardar els posts</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.desaUsuaris">
+<code class="descclassname">Main.</code><code class="descname">desaUsuaris</code><span class="sig-paren">(</span><em>fol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#desaUsuaris"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.desaUsuaris" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que desa tots els usuaris en un fitxer específic pels usuaris</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>fol</strong> &#8211; El nom del directori on s&#8217;ha de guardar els usuaris</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.follow">
+<code class="descclassname">Main.</code><code class="descname">follow</code><span class="sig-paren">(</span><em>nicks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#follow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.follow" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>S&#8217;utilitza per fer que un usuari en segueixi un altre</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nicks</strong> &#8211; Llista amb dos nicks dels usuaris: el primer serà el que seguirà i el segon el que serà seguit</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.hashtag">
+<code class="descclassname">Main.</code><code class="descname">hashtag</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#hashtag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.hashtag" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Afegeix un Hashtag a la xarxa social</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>id</strong> &#8211; el id del hashtag a afegir</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.help">
+<code class="descclassname">Main.</code><code class="descname">help</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#help"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.help" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Printeja una llista de les funcions existents a l&#8217;interpret i com funcionen</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.printT">
+<code class="descclassname">Main.</code><code class="descname">printT</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#printT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.printT" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Printeja la info demanada. Hi ha varis modes:</dt>
+<dd><ol class="first last arabic simple">
+<li>Users: Printeja els usuaris</li>
+<li>Posts: Printeja els posts creats en la xarxa</li>
+<li>Posts-user: Printeja els posts d&#8217;un usuari</li>
+<li>Followers-user: Printeja els followers d&#8217;un usuari</li>
+<li>Following-user: Printeja a qui està seguint l&#8217;usuari</li>
+<li>Following-posts: Printeja els posts de les persones que segueix un usuari ordenats cronològicament (invers)</li>
+</ol>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>info</strong> &#8211; Llista de strings on el primer serà el mode de printeig descrit anteriorment</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.publicar">
+<code class="descclassname">Main.</code><code class="descname">publicar</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#publicar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.publicar" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Publicarà un post a l&#8217;usuari</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>info</strong> &#8211; Llista de strings que contindrà en primer lloc el nick de l&#8217;usuari, en segon lloc <em>un</em> hashtag i
+en tercer lloc el contingut del post. Per afegir més hashtags ja es podrà fer amb <a class="reference internal" href="#Main.afegirHashtags" title="Main.afegirHashtags"><code class="xref py py-func docutils literal"><span class="pre">Main.afegirHashtags()</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.recupera">
+<code class="descclassname">Main.</code><code class="descname">recupera</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#recupera"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.recupera" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que es crida per recuperar totes les dades a partir d&#8217;un directori. Si hi ha cap problema recuperant les dades
+es demanarà que es crei una nova <a class="reference internal" href="iTICApp.html#iTICApp.iTICApp" title="iTICApp.iTICApp"><code class="xref py py-class docutils literal"><span class="pre">iTICApp.iTICApp</span></code></a> o es trii un altre fitxer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.recuperaFallida">
+<code class="descclassname">Main.</code><code class="descname">recuperaFallida</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#recuperaFallida"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.recuperaFallida" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Es crida en cas que la recuperació de dades no es pugui fer correctament. Presenta dues opcions: crear una nova <a class="reference internal" href="iTICApp.html#iTICApp.iTICApp" title="iTICApp.iTICApp"><code class="xref py py-class docutils literal"><span class="pre">iTICApp.iTICApp</span></code></a>
+o triar un altre directori d&#8217;on extreure les dades</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.recuperaHashtags">
+<code class="descclassname">Main.</code><code class="descname">recuperaHashtags</code><span class="sig-paren">(</span><em>fol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#recuperaHashtags"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.recuperaHashtags" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció per recuperar els hashtags a partir del directori on hi ha el fitxer que guarda la informació d&#8217;aquests</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>fol</strong> &#8211; El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">False si no s&#8217;ha pogut fer la conversió correctament i una llista de Hashtags si s&#8217;ha pogut fer correctament</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.recuperaPosts">
+<code class="descclassname">Main.</code><code class="descname">recuperaPosts</code><span class="sig-paren">(</span><em>fol</em>, <em>hashtags</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#recuperaPosts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.recuperaPosts" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que s&#8217;utilitza per recuperar els posts a partir del directori / fitxer on hi són guardats.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>fol</strong> &#8211; El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació</li>
+<li><strong>hashtags</strong> &#8211; Diccionari de <a class="reference internal" href="Hashtags.html#Hashtags.Hashtag" title="Hashtags.Hashtag"><code class="xref py py-class docutils literal"><span class="pre">Hashtags.Hashtag</span></code></a> existents en la xarxa social</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">False si no s&#8217;ha pogut fer correctament i llista de posts si sí que s&#8217;ha pogut realitzar la recuperació correctament</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.recuperaUsuaris">
+<code class="descclassname">Main.</code><code class="descname">recuperaUsuaris</code><span class="sig-paren">(</span><em>fol</em>, <em>posts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#recuperaUsuaris"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.recuperaUsuaris" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció que s&#8217;utilitza per recuperar els usuaris a partir del directori / fitxer on hi són guardats.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>fol</strong> &#8211; El nom del directori on hi haurà el fitxer de Posts per poder-ne extreure la informació</li>
+<li><strong>posts</strong> &#8211; Diccionari de <a class="reference internal" href="Posts.html#Posts.Post" title="Posts.Post"><code class="xref py py-class docutils literal"><span class="pre">Posts.Post</span></code></a> existents en la xarxa social</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">False si no s&#8217;ha pogut fer correctament i diccionari d&#8217;usuaris si sí que s&#8217;ha pogut realitzar la recuperació correctament</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.userFollowers">
+<code class="descclassname">Main.</code><code class="descname">userFollowers</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#userFollowers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.userFollowers" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Printeja el nombre de followers i de persones que segueix</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; Nick de l&#8217;usuari</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Main.usuari">
+<code class="descclassname">Main.</code><code class="descname">usuari</code><span class="sig-paren">(</span><em>nick</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Main.html#usuari"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Main.usuari" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Funció per afegir usuari a la xarca social</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>nick</strong> &#8211; El nick del usuari que es vol registrar</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="MainLib.html" title="capítol anterior">Main Lib</a></li>
+      <li>Next: <a href="Interpret.html" title="capítol següent">Classe Intèrpret i Excepció d&#8217;interpret</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Main.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/Main.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

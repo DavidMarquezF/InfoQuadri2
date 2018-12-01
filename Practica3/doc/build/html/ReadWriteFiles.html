@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ReadWriteFiles &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="index.html" />
+    <link rel="prev" title="Classe Hashtag" href="Hashtags.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-ReadWriteFiles"></span><div class="section" id="readwritefiles">
+<h1>ReadWriteFiles<a class="headerlink" href="#readwritefiles" title="Link permanent a aquest títol">¶</a></h1>
+<p>Aquest mòdul conté totes les funcions necessaries per guardar i recuperar strings de fitxers, crear directoris si és necessari
+amb els fitxers requerits a dins, comprobar que els fitxers requerits existeixen en un directori, etc.</p>
+<p>Per gestionar tot lo relacionat amb guardar i recuperar, hem decidit que les dades es guardin en tres fitxers:</p>
+<ol class="arabic simple">
+<li>Usuaris.txt</li>
+<li>Posts.txt</li>
+<li>Hashtags.txt</li>
+</ol>
+<p>Tots aquests aniran dins d&#8217;un directori que l&#8217;usuari especificarà.</p>
+<p>Per assegurar-nos que els fitxers tenen sempre el mateix nom, hem creat variables globals en aquest mòdul amb els noms
+que es posaran a cada fitxer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">NomFitUsuaris</span> <span class="o">=</span><span class="s2">&quot;Usuaris.txt&quot;</span>
+<span class="n">NomFitPosts</span> <span class="o">=</span><span class="s2">&quot;Posts.txt&quot;</span>
+<span class="n">NomFitHashtags</span> <span class="o">=</span><span class="s2">&quot;Hashtags.txt&quot;</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="ReadWriteFiles.askFolder">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">askFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#askFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.askFolder" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Demana un directori on hi ha els fitxers necessaris (chequeja si existeix, conté els fitxers necessàris, etc.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">El nom del directori</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ReadWriteFiles.checkFilesExist">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">checkFilesExist</code><span class="sig-paren">(</span><em>fol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#checkFilesExist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.checkFilesExist" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Chequeja si el directori fol conté els fitxers necessaris</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>fol</strong> &#8211; El directori que s&#8217;ha de comprobar si té els fitxers o no</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">True si conté els fitxers necessàris i False si no</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ReadWriteFiles.checkIfTypeExists">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">checkIfTypeExists</code><span class="sig-paren">(</span><em>type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#checkIfTypeExists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.checkIfTypeExists" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Chequeja si el nom del fitxer és un dels existents en el mòdul</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>type</strong> &#8211; El nom del fitxer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">True si existeix i False si no</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ReadWriteFiles.createUseFolder">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">createUseFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#createUseFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.createUseFolder" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>S&#8217;utilitza per guardar dades (crear el directori i fitxers, utilitzar-ne de ja existents, etc.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Retorna:</th><td class="field-body">El nom del directori on s&#8217;han guardat</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ReadWriteFiles.prepareFiles">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">prepareFiles</code><span class="sig-paren">(</span><em>folderName</em>, <em>createDir=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#prepareFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.prepareFiles" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Crea els fitxers necessàris en un directori, que, si no existeix, també es crea</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>folderName</strong> &#8211; El nom del directori</li>
+<li><strong>createDir</strong> &#8211; Si s&#8217;ha de crear o no un directori</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ReadWriteFiles.readlines">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">readlines</code><span class="sig-paren">(</span><em>folderName</em>, <em>type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#readlines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.readlines" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Llegeix el fitxer type dins de folderName</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>folderName</strong> &#8211; El nom del directori que conté els fitxers adeqüats</li>
+<li><strong>type</strong> &#8211; El nom del fitxer que es vol accedir</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="ReadWriteFiles.writeToFile">
+<code class="descclassname">ReadWriteFiles.</code><code class="descname">writeToFile</code><span class="sig-paren">(</span><em>folderName</em>, <em>type</em>, <em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ReadWriteFiles.html#writeToFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ReadWriteFiles.writeToFile" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Escriu al fitxer type dins de folderName el text (lines)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>folderName</strong> &#8211; El nom del directori que conté els fitxers adeqüats</li>
+<li><strong>type</strong> &#8211; El nom del fitxer que es vol accedir</li>
+<li><strong>lines</strong> &#8211; El text que se li vol  posar</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">False si no s&#8217;ha pogut realitzar correctament i True si s&#8217;ha pogut fer tot correctament</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Hashtags.html" title="capítol anterior">Classe Hashtag</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ReadWriteFiles.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/ReadWriteFiles.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
