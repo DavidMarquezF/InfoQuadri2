@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Interpret &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for Interpret</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">=================</span>
+<span class="sd">Classe Intèrpret</span>
+<span class="sd">=================</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Interpret"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret">[docs]</a><span class="k">class</span> <span class="nc">Interpret</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aquesta classe fa que de forma interactiva, es llegeixin ordres de l’usuari que haurà preparat previament</span>
+<span class="sd">    i les vagi executant una a una.</span>
+<span class="sd">    És un intèrpret d&#39;ordres configurable.Això significa que per</span>
+<span class="sd">    usar-lo primer cal configurar-lo. Configurar-lo consisteix a dir-li quines ordres ha de conèixer i</span>
+<span class="sd">    què han de fer.</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        &gt;&gt;&gt; def c1(l): print &quot;executo l’ordre 1: {0}&quot;.format(l[0])</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; def c2(l): print &quot;executo l’ordre 2: {0}&quot;.format(l[0])</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; i = Interpret()</span>
+<span class="sd">        &gt;&gt;&gt; i.setPrompt(&quot;∗∗&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; i.afegeixOrdre(&quot;llista&quot;, c1)</span>
+<span class="sd">        &gt;&gt;&gt; i.afegeixOrdre(&quot;bloqueja&quot;, c2)</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; i.run()</span>
+<span class="sd">        ∗∗ llista usuaris</span>
+<span class="sd">        executo l’ordre 1: usuaris</span>
+<span class="sd">        ∗∗ bloqueja pere</span>
+<span class="sd">        executo l’ordre 2: pere</span>
+<span class="sd">        ∗∗ surt</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+
+<span class="sd">    ======================= ========= =========================================================================</span>
+<span class="sd">    Atribut                  Tipus                       Significat</span>
+<span class="sd">    ======================= ========= =========================================================================</span>
+<span class="sd">    -prompt                  string    Emmagatzema el prompt que usarà l’intèrpret.</span>
+<span class="sd">    -dcom                    dict      És  el diccionari que emmagatzema les ordres conegudes per el intèrpret.</span>
+<span class="sd">    ======================= ========= =========================================================================</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span><span class="o">=</span><span class="s2">&quot;Prompt Default&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__dcom</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">getPrompt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span>
+
+    <span class="k">def</span> <span class="nf">getDCom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dcom</span>
+
+    <span class="k">def</span> <span class="nf">setPrompt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span> <span class="o">=</span> <span class="n">prompt</span>
+
+<div class="viewcode-block" id="Interpret.afegeixOrdre"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.afegeixOrdre">[docs]</a>    <span class="k">def</span> <span class="nf">afegeixOrdre</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nomc</span><span class="p">,</span> <span class="n">ordre</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Afegeix una ordre al diccionari d&#39;ordres amb una clau</span>
+<span class="sd">        :param nomc: La clau que s&#39;utilitzarà per invocar la ordre</span>
+<span class="sd">        :param ordre: La funció que s&#39;emmagatzemarà amb la clau nomc (el paràmetre de la funció serà una llista de strings)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">nomc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()):</span>
+            <span class="k">print</span> <span class="s2">&quot;Aquesta clau ja existeix&quot;</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()[</span><span class="n">nomc</span><span class="p">]</span> <span class="o">=</span> <span class="n">ordre</span></div>
+
+<div class="viewcode-block" id="Interpret.run"><a class="viewcode-back" href="../Interpret.html#Interpret.Interpret.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arrenca l’execució d’aquest intèrpret d’ordres. L’intèrpret s’executa indefinidament fins</span>
+<span class="sd">        que l’usuari escriu l’ordre surt.</span>
+
+<span class="sd">        A cada cicle d’interpretació, l’intèrpret escriu el prompt, llegeix un string del teclat, l’anal-</span>
+<span class="sd">        itza separant els mots que el formen. El primer mot considera que és un nom d’ordre i la</span>
+<span class="sd">        resta de mots els paràmetres d’aquesta ordre. Finalment executa la funció corresponent a</span>
+<span class="sd">        l’ordre i li passa com a paràmetre la resta de mots en una llista.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__prompt</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;surt&quot;</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;exit&quot;</span><span class="p">):</span>
+                <span class="k">break</span>
+            <span class="n">par</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">par</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">print</span> <span class="s2">&quot;Has d&#39;incloure parametres&quot;</span>
+                <span class="k">continue</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">par</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()):</span>
+                <span class="k">print</span> <span class="s2">&quot;L&#39;accio&quot;</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="s2">&quot;no existeix&quot;</span>
+                <span class="k">continue</span>
+
+            <span class="n">param</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameter</span> <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">par</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">getDCom</span><span class="p">()[</span><span class="n">key</span><span class="p">](</span><span class="n">param</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

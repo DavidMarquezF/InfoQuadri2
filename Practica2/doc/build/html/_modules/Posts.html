@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Posts &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for Posts</h1><div class="highlight"><pre>
+<span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#-*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">======================</span>
+<span class="sd">Classe Post</span>
+<span class="sd">======================</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">Hashtags</span> <span class="kn">import</span> <span class="n">Hashtag</span>
+
+<div class="viewcode-block" id="Post"><a class="viewcode-back" href="../Posts.html#Posts.Post">[docs]</a><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aquesta classe s&#39;encarrega de crear un post i emmagatzemar-lo.</span>
+
+<span class="sd">    Els id dels posts es gestionen amb una variable estàtica que es va incrementat cada vegada que es crea un post</span>
+
+<span class="sd">    ======================= ========= =========================================================================</span>
+<span class="sd">    Atribut                  Tipus                       Significat</span>
+<span class="sd">    ======================= ========= =========================================================================</span>
+<span class="sd">    +id                      int       És l&#39;identificador del post. S&#39;incrementa en 1 per cada post.</span>
+<span class="sd">    +contingut               string    És el contingut del post.</span>
+<span class="sd">    -date                    Date      És la data en el moment de publicar un post</span>
+<span class="sd">    +contenidorHashtags      list      Llista de posts</span>
+<span class="sd">    +nick                    string    És el nick de l&#39;usuari</span>
+<span class="sd">    ======================= ========= =========================================================================</span>
+
+<span class="sd">   &quot;&quot;&quot;</span>
+    <span class="n">idd</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">contingut</span><span class="p">):</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="o">=</span><span class="n">Post</span><span class="o">.</span><span class="n">idd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contingut</span><span class="o">=</span><span class="n">contingut</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__date</span><span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y %H:%M&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenidorHashtags</span><span class="o">=</span><span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registra_usuari</span><span class="p">(</span><span class="s2">&quot;ningu&quot;</span><span class="p">)</span>
+        <span class="n">Post</span><span class="o">.</span><span class="n">idd</span><span class="o">+=</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contingut</span><span class="o">==</span><span class="n">other</span><span class="o">.</span><span class="n">contingut</span>
+
+    <span class="k">def</span> <span class="nf">setDate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__date</span><span class="o">=</span><span class="n">d</span>
+    <span class="k">def</span> <span class="nf">getDate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__date</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Post.registra_usuari"><a class="viewcode-back" href="../Posts.html#Posts.Post.registra_usuari">[docs]</a>    <span class="k">def</span> <span class="nf">registra_usuari</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nick</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Afegeix un usuari</span>
+
+<span class="sd">        :param nick: usuari a afegir</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nick</span><span class="o">=</span><span class="n">nick</span></div>
+
+<div class="viewcode-block" id="Post.afegeix_hashtag"><a class="viewcode-back" href="../Posts.html#Posts.Post.afegeix_hashtag">[docs]</a>    <span class="k">def</span> <span class="nf">afegeix_hashtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Hashtag</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mètode que permet afegir un objecte :class:`Hashtags.Hashtag`</span>
+
+<span class="sd">        :param Hashtag: hashtag a afegir</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenidorHashtags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Hashtag</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">txt</span><span class="o">=</span><span class="s2">&quot;Post id:&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;info:&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">contingut</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Date&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDate</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;Nick user:&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nick</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot;Hashtags available:&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenidorHashtags</span><span class="p">:</span>
+            <span class="n">txt</span><span class="o">+=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+        <span class="k">return</span> <span class="n">txt</span></div>
+
+
+
+
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">h1</span><span class="o">=</span><span class="n">Hashtag</span><span class="p">(</span><span class="s2">&quot;adventure&quot;</span><span class="p">)</span>
+    <span class="n">h2</span><span class="o">=</span><span class="n">Hashtag</span><span class="p">(</span><span class="s2">&quot;winter&quot;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">h1</span>
+    <span class="k">print</span> <span class="n">h1</span><span class="o">==</span><span class="n">h2</span>
+    <span class="n">post1</span><span class="o">=</span><span class="n">Post</span><span class="p">(</span><span class="s2">&quot;Cal realitzar el possible per assolir l&#39;impossible.&quot;</span><span class="p">)</span>
+    <span class="n">post2</span><span class="o">=</span><span class="n">Post</span><span class="p">(</span><span class="s2">&quot;Tota accio provoca reaccions.&quot;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">post1</span>
+    <span class="k">print</span> <span class="n">post2</span>
+    <span class="n">post3</span><span class="o">=</span><span class="n">Post</span><span class="p">(</span><span class="s2">&quot;Cal realitzar el possible per assolir l&#39;impossible.&quot;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">post3</span><span class="o">.</span><span class="n">contingut</span>
+    <span class="k">print</span> <span class="n">post1</span><span class="o">==</span><span class="n">post3</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
