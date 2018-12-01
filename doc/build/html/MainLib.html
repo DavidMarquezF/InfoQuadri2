@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Main Lib &mdash; Practica 2 1.0.1b documentació</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Practica 2 1.0.1b documentació" href="index.html" />
+    <link rel="next" title="Main" href="Main.html" />
+    <link rel="prev" title="Classe Intèrpret" href="Interpret.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="module-MainLib"></span><div class="section" id="main-lib">
+<h1>Main Lib<a class="headerlink" href="#main-lib" title="Link permanent a aquest títol">¶</a></h1>
+<dl class="function">
+<dt id="MainLib.askNumberOption">
+<code class="descclassname">MainLib.</code><code class="descname">askNumberOption</code><span class="sig-paren">(</span><em>question</em>, <em>numbers</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MainLib.html#askNumberOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MainLib.askNumberOption" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Fa que l&#8217;usuari trii una opcio de les proposades en un menu printejat previament a la crida de la funció</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>question</strong> &#8211; La pregunta que es vol fer a l&#8217;usuari</li>
+<li><strong>numbers</strong> &#8211; Quantes opcions hi ha</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">La opcio vàlida triada per l&#8217;usuari</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="MainLib.askYorNQuestion">
+<code class="descclassname">MainLib.</code><code class="descname">askYorNQuestion</code><span class="sig-paren">(</span><em>question</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MainLib.html#askYorNQuestion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MainLib.askYorNQuestion" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Pregunta una pregunta de sí o no.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>question</strong> &#8211; La pregunta que es vol fer a l&#8217;usuari</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">True o False depenent del que ha triat l&#8217;usuari</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="MainLib.checkIfInt">
+<code class="descclassname">MainLib.</code><code class="descname">checkIfInt</code><span class="sig-paren">(</span><em>number</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MainLib.html#checkIfInt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MainLib.checkIfInt" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Mira si un numero és int o no</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><strong>number</strong> &#8211; número donat</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body">retorna true si és int i false si no</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">checkIfInt</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">checkIfInt</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="MainLib.encode">
+<code class="descclassname">MainLib.</code><code class="descname">encode</code><span class="sig-paren">(</span><em>key</em>, <em>string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MainLib.html#encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#MainLib.encode" title="Link permanent a aquesta definició">¶</a></dt>
+<dd><p>Encripta una string a partir d&#8217;una clau</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Paràmetres:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> &#8211; La clau amb la qual s&#8217;encriptarà</li>
+<li><strong>string</strong> &#8211; La string a encriptar</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Retorna:</th><td class="field-body"><p class="first last">La string encriptada</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;clau&quot;</span><span class="p">,</span> <span class="s2">&quot;Hola&quot;</span><span class="p">)</span>
+<span class="go">&#39;q9vN1g==&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Interpret.html" title="capítol anterior">Classe Intèrpret</a></li>
+      <li>Next: <a href="Main.html" title="capítol següent">Main</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Aquesta Pàgina</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/MainLib.txt"
+            rel="nofollow">Mostra Codi Font</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Cerca ràpida</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ves a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Entra paraules de cerca o el nom d'un mòdul, classe o funció.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ferran Godoy i David Márquez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/MainLib.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
